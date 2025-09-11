@@ -4,8 +4,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Send, CheckCircle, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useTranslation } from 'react-i18next';
 
 const ContactForm = () => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,12 +26,10 @@ const ContactForm = () => {
     setError(null);
 
     try {
-      // Replace these with your actual EmailJS credentials
       const serviceId = 'service_r6b880u';
       const templateId = 'template_a992h1c';
       const publicKey = '6phxnlcUaWnx1TlYO';
 
-      // Send form data using EmailJS
       await emailjs.send(
         serviceId, 
         templateId, 
@@ -42,10 +43,7 @@ const ContactForm = () => {
         publicKey
       );
 
-      console.log('Email sent successfully!');
       setIsSubmitted(true);
-      
-      // Reset form after successful submission
       setFormData({
         name: '',
         email: '',
@@ -54,8 +52,7 @@ const ContactForm = () => {
         projectType: '3D Website'
       });
     } catch (err) {
-      console.error('Failed to send email:', err);
-      setError('Failed to send message. Please try again later.');
+      setError(t('contact.error'));
     } finally {
       setIsLoading(false);
     }
@@ -72,8 +69,8 @@ const ContactForm = () => {
     return (
       <div className="text-center py-8">
         <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-        <h3 className="text-xl font-bold mb-2">Thank you!</h3>
-        <p className="text-slate-400">We'll get back to you within 24 hours to discuss your project.</p>
+        <h3 className="text-xl font-bold mb-2">{t('contact.thank_you')}</h3>
+        <p className="text-slate-400">{t('contact.reply_soon')}</p>
       </div>
     );
   }
@@ -85,10 +82,10 @@ const ContactForm = () => {
           {error}
         </div>
       )}
-      
+
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="name" className="text-white">Name *</Label>
+          <Label htmlFor="name" className="text-white">{t('contact.name')}</Label>
           <Input
             id="name"
             name="name"
@@ -96,11 +93,11 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="bg-slate-800 border-slate-600 text-white mt-1"
-            placeholder="Your full name"
+            placeholder={t('contact.placeholder_name')}
           />
         </div>
         <div>
-          <Label htmlFor="email" className="text-white">Email *</Label>
+          <Label htmlFor="email" className="text-white">{t('contact.email')}</Label>
           <Input
             id="email"
             name="email"
@@ -109,25 +106,25 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="bg-slate-800 border-slate-600 text-white mt-1"
-            placeholder="your@email.com"
+            placeholder={t('contact.placeholder_email')}
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="company" className="text-white">Company</Label>
+        <Label htmlFor="company" className="text-white">{t('contact.company')}</Label>
         <Input
           id="company"
           name="company"
           value={formData.company}
           onChange={handleChange}
           className="bg-slate-800 border-slate-600 text-white mt-1"
-          placeholder="Your company name"
+          placeholder={t('contact.placeholder_company')}
         />
       </div>
 
       <div>
-        <Label htmlFor="projectType" className="text-white">Project Type *</Label>
+        <Label htmlFor="projectType" className="text-white">{t('contact.project_type')}</Label>
         <select
           id="projectType"
           name="projectType"
@@ -136,16 +133,16 @@ const ContactForm = () => {
           required
           className="w-full mt-1 px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="3D Website">3D Interactive Website</option>
-          <option value="Modern Website">Modern Website</option>
-          <option value="E-commerce">E-commerce Store</option>
-          <option value="Custom Development">Custom Development</option>
-          <option value="Redesign">Website Redesign</option>
+          <option value="3D Website">{t('contact.project_types.3d_website')}</option>
+          <option value="Modern Website">{t('contact.project_types.modern_website')}</option>
+          <option value="E-commerce">{t('contact.project_types.e_commerce')}</option>
+          <option value="Custom Development">{t('contact.project_types.custom_development')}</option>
+          <option value="Redesign">{t('contact.project_types.redesign')}</option>
         </select>
       </div>
 
       <div>
-        <Label htmlFor="message" className="text-white">Project Details *</Label>
+        <Label htmlFor="message" className="text-white">{t('contact.details')}</Label>
         <textarea
           id="message"
           name="message"
@@ -154,7 +151,7 @@ const ContactForm = () => {
           required
           rows={4}
           className="w-full mt-1 px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-          placeholder="Tell us about your project, goals, and any specific requirements..."
+          placeholder={t('contact.placeholder_details')}
         />
       </div>
 
@@ -166,18 +163,18 @@ const ContactForm = () => {
         {isLoading ? (
           <>
             <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-            Sending...
+            {t('contact.sending')}
           </>
         ) : (
           <>
-            Send Message
+            {t('contact.submit')}
             <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </>
         )}
       </Button>
 
       <p className="text-xs text-slate-400 text-center">
-        By submitting this form, you agree to our privacy policy. We'll only use your information to respond to your inquiry.
+        {t('contact.policy')}
       </p>
     </form>
   );
