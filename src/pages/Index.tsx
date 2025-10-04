@@ -4,7 +4,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import ContactForm from '@/components/ContactForm';
-import CustomCursor from '@/components/CustomCursor';
 import PortfolioSection from '@/components/Portfolio';
 import ServicesSection from '@/components/Services';
 import AboutSection from '@/components/About';
@@ -59,13 +58,18 @@ const Index = () => {
   const { t } = useTranslation();
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef<number>(0);
 
-  // Optimize scroll handler with useCallback
+  // Optimize scroll handler with useCallback and throttling
   const handleScroll = useCallback(() => {
-    setScrollY(window.scrollY);
+    // Throttle scroll events for better performance
+    if (!rafRef.current) {
+      rafRef.current = requestAnimationFrame(() => {
+        setScrollY(window.scrollY);
+        rafRef.current = 0;
+      });
+    }
   }, []);
 
   // Throttled mouse move handler
@@ -76,7 +80,6 @@ const Index = () => {
     // Throttle state updates to prevent excessive re-renders
     if (!rafRef.current) {
       rafRef.current = requestAnimationFrame(() => {
-        setMousePosition(mousePositionRef.current);
         rafRef.current = 0;
       });
     }
@@ -135,27 +138,27 @@ const Index = () => {
     <TestimonialItem key={index} testimonial={testimonial} />
   )), [testimonials]);
 
-  // Memoize floating elements
+  // Memoize floating elements - reduced from 8 to 4 for better performance
   const floatingElements = useMemo(() => (
-    [...Array(8)].map((_, i) => (
+    [...Array(4)].map((_, i) => (
       <div
         key={i}
-        className="absolute opacity-10 hover:opacity-20 transition-opacity duration-1000"
+        className="absolute opacity-5 hover:opacity-10 transition-opacity duration-1000"
         style={{
-          left: `${15 + (i * 10)}%`,
-          top: `${20 + (i * 8)}%`,
-          transform: `translateY(${Math.sin(scrollY * 0.002 + i) * 30}px) rotate(${i * 45}deg)`,
-          animationDelay: `${i * 0.5}s`
+          left: `${20 + (i * 15)}%`,
+          top: `${30 + (i * 10)}%`,
+          transform: `translateY(${Math.sin(scrollY * 0.001 + i) * 15}px) rotate(${i * 45}deg)`, // Reduced animation intensity
+          animationDelay: `${i * 0.3}s`
         }}
       >
-        <div className={`w-12 h-12 bg-gradient-to-br ${i % 2 === 0 ? 'from-amber-400 to-orange-500' : 'from-violet-400 to-purple-500'} ${i % 3 === 0 ? 'rounded-full' : 'rounded-lg'} shadow-xl`} />
+        <div className={`w-8 h-8 bg-gradient-to-br ${i % 2 === 0 ? 'from-amber-400 to-orange-500' : 'from-violet-400 to-purple-500'} ${i % 3 === 0 ? 'rounded-full' : 'rounded-lg'} shadow-lg`} /> {/* Smaller elements */}
       </div>
     ))
   ), [scrollY]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950 text-white overflow-x-hidden cursor-none">
-      <CustomCursor mousePosition={mousePosition} />
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950 text-white overflow-x-hidden">
+      {/* <CustomCursor mousePosition={mousePosition} /> */}
       
       {/* Enhanced Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl border-b border-white/5">

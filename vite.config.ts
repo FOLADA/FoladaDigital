@@ -62,13 +62,18 @@ export default defineConfig(({ mode }) => ({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug']
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
+        passes: 2 // Additional compression passes
       },
       mangle: true,
       format: {
         comments: false
       }
-    }
+    },
+    // Enable brotli compression
+    brotliSize: true,
+    // Reduce sourcemap size
+    sourcemap: mode === 'development' ? 'inline' : false
   },
   // Optimize dependencies
   optimizeDeps: {
@@ -80,6 +85,17 @@ export default defineConfig(({ mode }) => ({
       'lucide-react',
       'i18next',
       'react-i18next'
-    ]
+    ],
+    // Enable esbuild for faster builds
+    esbuildOptions: {
+      target: 'es2020'
+    }
+  },
+  // Enable caching
+  cacheDir: 'node_modules/.vite',
+  // Enable worker support
+  worker: {
+    format: 'es',
+    plugins: () => [react()]
   }
 }));

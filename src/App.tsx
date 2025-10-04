@@ -7,12 +7,24 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+// Lazy load components for better performance
+import { lazy, Suspense as ReactSuspense } from "react";
+
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 import { useTranslation } from "react-i18next";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 10 * 60 * 1000, // 10 minutes
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 /* ---------- optional floating language switcher ---------- */
 const LanguageSwitcher = () => {
@@ -40,6 +52,13 @@ const LanguageSwitcher = () => {
 };
 /* -------------------------------------------------------- */
 
+// Loading component for lazy loading
+const LoadingFallback = () => (
+  <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950 flex items-center justify-center">
+    <div className="w-16 h-16 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -47,18 +66,26 @@ const App = () => (
       <Sonner />
 
       {/* Suspense lets react‑i18next wait for JSON files the first time */}
-      <Suspense fallback={null}>
+      <ReactSuspense fallback={<LoadingFallback />}>
         {/* optional global language switch */}
         <LanguageSwitcher />
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={
+              <ReactSuspense fallback={<LoadingFallback />}>
+                <Index />
+              </ReactSuspense>
+            } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH‑ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={
+              <ReactSuspense fallback={<LoadingFallback />}>
+                <NotFound />
+              </ReactSuspense>
+            } />
           </Routes>
         </BrowserRouter>
-      </Suspense>
+      </ReactSuspense>
     </TooltipProvider>
   </QueryClientProvider>
 );

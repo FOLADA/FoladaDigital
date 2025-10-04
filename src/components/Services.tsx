@@ -25,18 +25,30 @@ import { useTranslation } from 'react-i18next';
 const TiltCard = memo(({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [0, 1], [8, -8]);
-  const rotateY = useTransform(x, [0, 1], [-8, 8]);
+  const rotateX = useTransform(y, [0, 1], [4, -4]); // Reduced tilt effect for better performance
+  const rotateY = useTransform(x, [0, 1], [-4, 4]); // Reduced tilt effect for better performance
 
   return (
     <motion.div
       className={`perspective-1000 ${className}`}
       onMouseMove={(e) => {
-        const bounds = e.currentTarget.getBoundingClientRect();
-        const px = (e.clientX - bounds.left) / bounds.width;
-        const py = (e.clientY - bounds.top) / bounds.height;
-        x.set(px);
-        y.set(py);
+        // Throttle mouse move events for better performance
+        if (window.requestIdleCallback) {
+          window.requestIdleCallback(() => {
+            const bounds = e.currentTarget.getBoundingClientRect();
+            const px = (e.clientX - bounds.left) / bounds.width;
+            const py = (e.clientY - bounds.top) / bounds.height;
+            x.set(px);
+            y.set(py);
+          }, { timeout: 100 });
+        } else {
+          // Fallback for browsers that don't support requestIdleCallback
+          const bounds = e.currentTarget.getBoundingClientRect();
+          const px = (e.clientX - bounds.left) / bounds.width;
+          const py = (e.clientY - bounds.top) / bounds.height;
+          x.set(px);
+          y.set(py);
+        }
       }}
       onMouseLeave={() => {
         x.set(0.5);
@@ -82,33 +94,33 @@ const ServiceCard = memo(({
   return (
     <motion.div
       key={service.title}
-      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-      className={`relative ${index % 2 === 0 ? "md:-mt-6" : "md:mt-6"}`}
+      viewport={{ once: true, margin: "-100px" }} // Trigger animation earlier
+      transition={{ delay: index * 0.05, duration: 0.4, ease: "easeOut" }} // Faster animations
+      className={`relative ${index % 2 === 0 ? "md:-mt-3" : "md:mt-3"}`} // Reduced vertical offset
     >
       <TiltCard>
         <Card className="relative overflow-hidden bg-white/5 backdrop-blur-md border border-slate-700/50 hover:border-amber-500/50 rounded-2xl shadow-xl group transform transition-transform duration-300">
           <div
             aria-hidden
-            className={`pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br ${getGradient(index)} opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-2xl z-0`}
+            className={`pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br ${getGradient(index)} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl z-0`} // Reduced blur and opacity for better performance
           />
-          <CardContent className="relative p-10 z-10">
+          <CardContent className="relative p-8 z-10"> {/* Reduced padding */}
             <div
-              className={`w-14 h-14 rounded-xl bg-gradient-to-r ${getGradient(index)} flex items-center justify-center mb-8 shadow-lg group-hover:scale-105 transition-transform duration-300`}
+              className={`w-12 h-12 rounded-xl bg-gradient-to-r ${getGradient(index)} flex items-center justify-center mb-6 shadow-md group-hover:scale-105 transition-transform duration-300`} // Smaller icon container
             >
               {getIcon(index)}
             </div>
-            <h3 className="text-2xl font-light mb-4 text-white group-hover:text-amber-400 transition-colors">
+            <h3 className="text-xl font-light mb-3 text-white group-hover:text-amber-400 transition-colors"> {/* Smaller text */}
               {service.title}
             </h3>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-400 mb-5 leading-relaxed text-sm"> {/* Smaller text */}
               {service.description}
             </p>
             <Dialog>
               <DialogTrigger asChild>
-                <button className="inline-flex items-center text-amber-400 group-hover:text-orange-400 font-medium">
+                <button className="inline-flex items-center text-amber-400 group-hover:text-orange-400 font-medium text-sm"> {/* Smaller text */}
                   <span className="mr-2">{t('servicesSection.discoverMore')}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -150,23 +162,15 @@ export default function ServicesSection() {
   const icons = useMemo(() => [
     <Code2 className="w-7 h-7 text-white" />, // Web Development
     <Smartphone className="w-7 h-7 text-white" />, // Mobile Apps
-    <BarChart3 className="w-7 h-7 text-white" />, // SEO & Analytics
+    <MessageCircle className="w-7 h-7 text-white" />, // AI Automations
     <Globe2 className="w-7 h-7 text-white" />, // SMM
-    <Type className="w-7 h-7 text-white" />, // Copywriting
-    <PenTool className="w-7 h-7 text-white" />, // Brand Identity
-    <BarChart3 className="w-7 h-7 text-white" />, // Maintenance & Support
-    <MessageCircle className="w-7 h-7 text-white" />, // Automated Customer Support (AI Chatbots)
   ], []);
   
   const gradients = useMemo(() => [
     "from-violet-600 to-purple-700",
     "from-indigo-500 to-blue-600",
-    "from-green-500 to-emerald-600",
+    "from-cyan-500 to-blue-600",
     "from-amber-400 to-orange-500",
-    "from-teal-400 to-cyan-500",
-    "from-fuchsia-500 to-pink-600",
-    "from-slate-500 to-gray-700",
-    "from-cyan-500 to-blue-600", // New gradient for AI Chatbots
   ], []);
 
   return (
@@ -190,7 +194,7 @@ export default function ServicesSection() {
             {t('servicesSection.subtitle')}
           </p>
         </motion.div>
-        <div className="grid md:grid-cols-3 gap-y-20 gap-x-10 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10 relative z-10">
           {translatedServices.map((service, index) => (
             <ServiceCard 
               key={service.title}

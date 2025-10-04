@@ -14,30 +14,19 @@ const itemVariants: Variants = {
   }),
 };
 
-const filtersKeys = [
-  "all",
-  "photography",
-  "startup",
-  "entertainment",
-  "energy",
-  "transportation",
-  "hospitality",
-];
-
 const portfolioItems = [
   {
     titleKey: "portfolioItems.photography.title",
     descriptionKey: "portfolioItems.photography.description",
-    url: "https://photography-sf.vercel.app/",
+    url: "https://beermuseum.ge/",
     categoryKey: "filters.photography",
-    features: ["3D Gallery", "Interactive UI", "Mobile Optimized"],
-    image: "/photography.png",
-    categoryRaw: "Photography",
+    features: ["Restaurants", "Clean UI", "Multilingual"],
+    image: "/Weihenstephan.png",
   },
   {
     titleKey: "portfolioItems.education.title",
     descriptionKey: "portfolioItems.education.description",
-    url: "https://tergi-for-generations.vercel.app/",
+    url: "https://tergiuni.ge/",
     categoryKey: "filters.startup",
     features: ["Interactive Stories", "Heritage Design", "Modern UX"],
     image: "/tergi.png",
@@ -64,10 +53,10 @@ const portfolioItems = [
   {
     titleKey: "portfolioItems.car_rental.title",
     descriptionKey: "portfolioItems.car_rental.description",
-    url: "https://primesdrive.vercel.app/",
+    url: "https://shushabanditseretelze.ge/",
     categoryKey: "filters.transportation",
     features: ["Dynamic Booking", "Vehicle Previews", "User-Friendly"],
-    image: "/primedrive.png",
+    image: "/shushabandi.png",
     categoryRaw: "Transportation",
   },
   {
@@ -99,6 +88,8 @@ const ParallaxImage = memo(({ src, alt }: { src: string; alt: string }) => {
       style={{ y }}
       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       loading="lazy"
+      decoding="async"
+      fetchPriority="low"
     />
   );
 });
@@ -131,10 +122,7 @@ const PortfolioItem = memo(({ item, idx, t }: { item: typeof portfolioItems[0]; 
               <ParallaxImage src={item.image} alt={t(item.titleKey)} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
-                <span className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 text-xs uppercase tracking-wide">
-                  {t(item.categoryKey)}
-                </span>
-                <h3 className="mt-2 text-2xl font-light tracking-tight">
+                <h3 className="text-2xl font-light tracking-tight">
                   {t(item.titleKey)}
                 </h3>
               </div>
@@ -175,38 +163,11 @@ PortfolioItem.displayName = "PortfolioItem";
 
 export default function PortfolioSection() {
   const { t } = useTranslation();
-  const [activeFilter, setActiveFilter] = useState<string>("all");
-
-  // Memoize filtered items
-  const filtered = useMemo(
-    () =>
-      activeFilter === "all"
-        ? portfolioItems
-        : portfolioItems.filter(
-            (item) => item.categoryRaw.toLowerCase() === activeFilter
-          ),
-    [activeFilter]
-  );
-
-  // Memoize filter buttons
-  const filterButtons = useMemo(() => filtersKeys.map((key) => (
-    <button
-      key={key}
-      onClick={() => setActiveFilter(key)}
-      className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-        activeFilter === key
-          ? "bg-violet-500 text-white shadow-lg"
-          : "bg-slate-800 text-gray-400 hover:bg-slate-700 hover:text-gray-200"
-      }`}
-    >
-      {t(`filters.${key}`)}
-    </button>
-  )), [activeFilter, t]);
 
   // Memoize portfolio items
-  const portfolioItemsList = useMemo(() => filtered.map((item, idx) => (
+  const portfolioItemsList = useMemo(() => portfolioItems.map((item, idx) => (
     <PortfolioItem key={idx} item={item} idx={idx} t={t} />
-  )), [filtered, t]);
+  )), [t]);
 
   return (
     <section
@@ -228,16 +189,6 @@ export default function PortfolioSection() {
           <p className="text-xl text-gray-300 font-light">
             {t("portfolio.subtitle")}
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          viewport={{ once: true }}
-          className="flex justify-center flex-wrap gap-4 mb-16"
-        >
-          {filterButtons}
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
