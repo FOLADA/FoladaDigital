@@ -1,4 +1,5 @@
 import { useEffect, useState, memo, useMemo, useCallback, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Play, Star, Users, Zap, Target, BarChart3, Globe, CheckCircle, Quote, ChevronDown, Sparkles, Award, TrendingUp, Mail, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -179,6 +180,9 @@ const Index = () => {
             <button onClick={() => scrollToSection('pricing')} className="hover:text-amber-400 transition-colors cursor-pointer text-sm font-medium">
               {t('nav.pricing')}
             </button>
+            <Link to="/blog" className="hover:text-amber-400 transition-colors cursor-pointer text-sm font-medium">
+              {t('nav.blog') || 'Blog'}
+            </Link>
             <Dialog>
               <DialogTrigger asChild>
                 <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-2 cursor-pointer font-medium">

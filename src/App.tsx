@@ -11,6 +11,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { lazy, Suspense as ReactSuspense } from "react";
 
 const Index = lazy(() => import("./pages/Index"));
+const BlogIndex = lazy(() => import("./pages/blog/index"));
+const BlogDetail = lazy(() => import("./pages/blog/detail"));
+const BlogTest = lazy(() => import("./components/blog/BlogTestPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 import { useTranslation } from "react-i18next";
@@ -19,7 +22,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
-      cacheTime: 10 * 60 * 1000, // 10 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes (replaces cacheTime)
       retry: 1,
       refetchOnWindowFocus: false,
     },
@@ -75,6 +78,21 @@ const App = () => (
             <Route path="/" element={
               <ReactSuspense fallback={<LoadingFallback />}>
                 <Index />
+              </ReactSuspense>
+            } />
+            <Route path="/blog" element={
+              <ReactSuspense fallback={<LoadingFallback />}>
+                <BlogIndex />
+              </ReactSuspense>
+            } />
+            <Route path="/blog/:slug" element={
+              <ReactSuspense fallback={<LoadingFallback />}>
+                <BlogDetail />
+              </ReactSuspense>
+            } />
+            <Route path="/blog-test" element={
+              <ReactSuspense fallback={<LoadingFallback />}>
+                <BlogTest />
               </ReactSuspense>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH‑ALL "*" ROUTE */}
