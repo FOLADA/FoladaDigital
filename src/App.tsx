@@ -11,9 +11,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { lazy, Suspense as ReactSuspense } from "react";
 
 const Index = lazy(() => import("./pages/Index"));
-const BlogIndex = lazy(() => import("./pages/blog/index"));
-const BlogDetail = lazy(() => import("./pages/blog/detail"));
-const BlogTest = lazy(() => import("./components/blog/BlogTestPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 import { useTranslation } from "react-i18next";
@@ -22,7 +19,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
-      gcTime: 10 * 60 * 1000, // 10 minutes (replaces cacheTime)
+      gcTime: 10 * 60 * 1000, // 10 minutes
       retry: 1,
       refetchOnWindowFocus: false,
     },
@@ -43,8 +40,8 @@ const LanguageSwitcher = () => {
           className={`px-2 py-1 text-xs rounded-md border
             ${
               i18n.resolvedLanguage === lng
-                ? "bg-amber-500 text-white border-amber-500"
-                : "bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700"
+                ? "bg-red-600 text-white border-red-600"
+                : "bg-black/50 text-red-300 border-red-900/50 hover:bg-black/70"
             }`}
         >
           {lng.toUpperCase()}
@@ -57,8 +54,15 @@ const LanguageSwitcher = () => {
 
 // Loading component for lazy loading
 const LoadingFallback = () => (
-  <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950 flex items-center justify-center">
-    <div className="w-16 h-16 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+  <div className="min-h-screen bg-black flex items-center justify-center">
+    {/* Sophisticated Gradient Background for loading state - expanded black at top */}
+    <div className="fixed inset-0 z-0 bg-black">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_center,_#DC143C_0%,_#8B0000_15%,_#4A0E0E_30%,_#2B0808_50%,_#0D0404_70%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_90%,_rgba(220,20,60,0.4)_0%,_rgba(139,0,0,0.2)_20%,_transparent_40%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(13,4,4,0.9)_100%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_#000000_0%,_transparent_30%)]"></div>
+    </div>
+    <div className="relative z-10 w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 
@@ -78,21 +82,6 @@ const App = () => (
             <Route path="/" element={
               <ReactSuspense fallback={<LoadingFallback />}>
                 <Index />
-              </ReactSuspense>
-            } />
-            <Route path="/blog" element={
-              <ReactSuspense fallback={<LoadingFallback />}>
-                <BlogIndex />
-              </ReactSuspense>
-            } />
-            <Route path="/blog/:slug" element={
-              <ReactSuspense fallback={<LoadingFallback />}>
-                <BlogDetail />
-              </ReactSuspense>
-            } />
-            <Route path="/blog-test" element={
-              <ReactSuspense fallback={<LoadingFallback />}>
-                <BlogTest />
               </ReactSuspense>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH‑ALL "*" ROUTE */}

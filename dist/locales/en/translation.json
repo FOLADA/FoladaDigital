@@ -5,14 +5,7 @@
     "portfolio": "Portfolio",
     "about": "About",
     "pricing": "Pricing",
-    "blog": "Blog",
     "get_started": "Get Started"
-  },
-  "blog": {
-    "title": "Our Blog",
-    "subtitle": "Discover the latest insights, stories, and updates from our team",
-    "readMore": "Read More",
-    "backToBlog": "Back to Blog"
   },
   "hero": {
     "subtitle": "Your Brand. Our Digital Brilliance.",
