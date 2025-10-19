@@ -18,7 +18,7 @@ const UnderConstruction = () => {
       
       {/* Main content without frame/box */}
       <div className={`relative z-10 text-center transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-2xl">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-12 leading-tight tracking-tight drop-shadow-2xl">
           ვებსაიტი დამუშავების პროცესშია
         </h1>
         
