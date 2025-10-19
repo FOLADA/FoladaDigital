@@ -22,10 +22,6 @@ const UnderConstruction = () => {
           ვებსაიტი დამუშავების პროცესშია
         </h1>
         
-        <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-12 leading-relaxed drop-shadow-lg">
-          ჩვენ ვმუშაობთ ამ ვებსაიტზე და ვცდილობთ მას უმეტეს მომხმარებელზე მორგოთ.
-        </p>
-        
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <a 
             href="https://facebook.com/folada.ge" 
