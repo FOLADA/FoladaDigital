@@ -157,328 +157,310 @@ const Index = () => {
   ), [scrollY]);
 
   return (
-    <div className="min-h-screen text-white overflow-x-hidden relative">
-      {/* Sophisticated Gradient Background - expanded black at top */}
-      <div className="fixed inset-0 z-0 bg-black">
-        {/* Base layer - deep red concentrated at bottom with expanded black at top */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_center,_#DC143C_0%,_#8B0000_15%,_#4A0E0E_30%,_#2B0808_50%,_#0D0404_70%)]"></div>
-        
-        {/* Secondary layer - enhance the black at top */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_90%,_rgba(220,20,60,0.4)_0%,_rgba(139,0,0,0.2)_20%,_transparent_40%)]"></div>
-        
-        {/* Vignette effect - dark edges with stronger top darkness */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(13,4,4,0.9)_100%)]"></div>
-        
-        {/* Top darkening layer - expands black area at top */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_#000000_0%,_transparent_30%)]"></div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950 text-white overflow-x-hidden">
+      {/* <CustomCursor mousePosition={mousePosition} /> */}
       
-      {/* Content container with higher z-index */}
-      <div className="relative z-10">
-        {/* <CustomCursor mousePosition={mousePosition} /> */}
-        
-        {/* Enhanced Navigation */}
-        <nav className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-xl border-b border-white/10">
-          <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div className="text-2xl font-bold bg-gradient-to-r from-red-400 via-red-600 to-red-900 bg-clip-text text-transparent">
-              {t('brand')}
+      {/* Enhanced Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl border-b border-white/5">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="text-2xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 bg-clip-text text-transparent">
+            {t('brand')}
+          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <button onClick={() => scrollToSection('services')} className="hover:text-amber-400 transition-colors cursor-pointer text-sm font-medium">
+              {t('nav.services')}
+            </button>
+            <button onClick={() => scrollToSection('portfolio')} className="hover:text-amber-400 transition-colors cursor-pointer text-sm font-medium">
+              {t('nav.portfolio')}
+            </button>
+            <button onClick={() => scrollToSection('about')} className="hover:text-amber-400 transition-colors cursor-pointer text-sm font-medium">
+              {t('nav.about')}
+            </button>
+            <button onClick={() => scrollToSection('pricing')} className="hover:text-amber-400 transition-colors cursor-pointer text-sm font-medium">
+              {t('nav.pricing')}
+            </button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-2 cursor-pointer font-medium">
+                  {t('nav.get_started')}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-slate-900 border-slate-700 text-white">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+                    {t('contact.schedule_consultation')}
+                  </DialogTitle>
+                </DialogHeader>
+                <ContactForm />
+              </DialogContent>
+            </Dialog>
+          </div>
+        </div>
+      </nav>
+
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        {/* Minimalist Background Elements */}
+        <div className="absolute inset-0">
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-600/20 to-purple-600/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-amber-600/20 to-orange-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-blue-600/15 to-cyan-600/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+
+        {/* Geometric Floating Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {floatingElements}
+        </div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-full border border-amber-400/20 mb-12 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 mr-2 text-amber-400" />
+              <span className="text-sm font-medium">{t('hero.subtitle')}</span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('services')} className="hover:text-red-400 transition-colors cursor-pointer text-sm font-medium">
-                {t('nav.services')}
-              </button>
-              <button onClick={() => scrollToSection('portfolio')} className="hover:text-red-400 transition-colors cursor-pointer text-sm font-medium">
-                {t('nav.portfolio')}
-              </button>
-              <button onClick={() => scrollToSection('about')} className="hover:text-red-400 transition-colors cursor-pointer text-sm font-medium">
-                {t('nav.about')}
-              </button>
-              <button onClick={() => scrollToSection('pricing')} className="hover:text-red-400 transition-colors cursor-pointer text-sm font-medium">
-                {t('nav.pricing')}
-              </button>
+            
+            <h1 className="text-7xl md:text-9xl font-light mb-8 leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent font-extralight">
+                {t('hero.title1')}
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 bg-clip-text text-transparent font-bold">
+                {t('hero.title2')}
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+              {t('hero.description')}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white px-6 py-2 cursor-pointer font-medium">
-                    {t('nav.get_started')}
+                  <Button size="lg" className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-12 py-4 text-lg group cursor-pointer font-medium">
+                    {t('hero.btn_start')}
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="bg-black/90 border-red-900/50 text-white backdrop-blur-xl">
+                <DialogContent className="bg-slate-900 border-slate-700 text-white">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                       {t('contact.schedule_consultation')}
                     </DialogTitle>
                   </DialogHeader>
                   <ContactForm />
                 </DialogContent>
               </Dialog>
+              <Button onClick={() => scrollToSection('portfolio')} size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5 px-12 py-4 text-lg group cursor-pointer font-medium">
+                <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                {t('hero.btn_explore')}
+              </Button>
+            </div>
+
+            {/* Enhanced Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {statItems}
             </div>
           </div>
-        </nav>
+        </div>
 
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-          {/* Minimalist Background Elements */}
-          <div className="absolute inset-0">
-            {/* Gradient Orbs */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-red-900/20 to-red-700/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-red-800/20 to-red-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-red-900/15 to-red-800/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-amber-400/60" />
+        </div>
+      </section>
+
+      {/* Social Proof Section */}
+      <section className="py-20 bg-slate-800/50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">{t('social_proof.heading')}</h2>
+            <p className="text-slate-400 text-lg">{t('social_proof.description')}</p>
           </div>
-
-          {/* Geometric Floating Elements */}
-          <div className="absolute inset-0 pointer-events-none">
-            {floatingElements}
-          </div>
-
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-red-900/20 to-red-800/20 rounded-full border border-red-800/30 mb-12 backdrop-blur-sm">
-                <Sparkles className="w-4 h-4 mr-2 text-red-400" />
-                <span className="text-sm font-medium">{t('hero.subtitle')}</span>
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60">
+            {['EnergoSun', 'PhotographySF', 'Tergi', 'Coolstack', 'PrimeDrive'].map((brand, index) => (
+              <div key={index} className="text-center transform hover:scale-105 transition-transform">
+                <div className="text-2xl font-bold text-white/40 hover:text-white/60 transition-colors cursor-pointer">{brand}</div>
               </div>
-              
-              <h1 className="text-7xl md:text-9xl font-light mb-8 leading-tight tracking-tight">
-                <span className="bg-gradient-to-r from-red-100 via-red-200 to-red-100 bg-clip-text text-transparent font-extralight">
-                  {t('hero.title1')}
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-red-400 via-red-600 to-red-800 bg-clip-text text-transparent font-bold">
-                  {t('hero.title2')}
-                </span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-red-100 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-                {t('hero.description')}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ServicesSection/>
+      <PortfolioSection/>
+      <AboutSection/>
+      <PricingSection/>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-slate-800/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">{t('testimonials.heading')}</h2>
+            <p className="text-slate-400 text-lg">{t('testimonials.description')}</p>
+          </div>
+
+          <div className="relative max-w-3xl mx-auto">
+            <Carousel opts={{ loop: true }}>
+              <CarouselContent>
+                {testimonialItems}
+              </CarouselContent>
+              <CarouselPrevious className="-left-6 top-1/2 -translate-y-1/2" />
+              <CarouselNext className="-right-6 top-1/2 -translate-y-1/2" />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-5xl font-bold mb-6">
+            {t('cta.heading')}
+          </h2>
+          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            {t('cta.description')}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-4 text-lg cursor-pointer">
+                  {t('cta.btn_strategy')}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-slate-900 border-slate-700 text-white">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    {t('contact.schedule_consultation')}
+                  </DialogTitle>
+                </DialogHeader>
+                <ContactForm />
+              </DialogContent>
+            </Dialog>
+            <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg cursor-pointer" onClick={() => scrollToSection('portfolio')}>
+              {t('cta.btn_portfolio')}
+            </Button>
+          </div>
+
+          <div className="flex items-center justify-center space-x-6 text-sm text-slate-400">
+            <div className="flex items-center">
+              <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
+              {t('cta.benefits.presence')}
+            </div>
+            <div className="flex items-center">
+              <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
+              {t('cta.benefits.contracts')}
+            </div>
+            <div className="flex items-center">
+              <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
+              {t('cta.benefits.guarantee')}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-16 bg-gradient-to-br from-slate-900 to-slate-950 border-t border-slate-800">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {/* Brand Column */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center mb-6">
+                <div className="text-3xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 bg-clip-text text-transparent">
+                  {t('brand')}
+                </div>
+                <div className="ml-4 w-1 h-8 bg-gradient-to-b from-amber-500 to-orange-600"></div>
+              </div>
+              <p className="text-slate-400 mb-6 max-w-md text-lg">
+                {t('footer.description')}
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+              {/* Social Links */}
+              <div className="flex space-x-5">
+                {['twitter', 'linkedin', 'dribbble', 'github'].map((platform) => (
+                  <a 
+                    key={platform}
+                    href="#" 
+                    className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-orange-600 transition-all duration-300"
+                  >
+                    <div className="bg-gray-300 border-2 border-dashed rounded-xl w-6 h-6" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Column */}
+            <div>
+              <h4 className="font-bold text-lg mb-6 pb-2 border-b border-slate-800/50 text-white flex items-center">
+                <Zap className="w-5 h-5 mr-2 text-amber-400" />
+                {t('contactfoot.schedule_consultation')}
+              </h4>
+              <div className="space-y-5">
+                <div className="flex items-start">
+                  <div className="bg-slate-800 p-2 rounded-lg mr-4">
+                    <Mail className="w-5 h-5 text-amber-400" />
+                  </div>
+                  <div>
+                    <p className="text-slate-400 text-sm">{t('contactfoot.email_label')}</p>
+                    <a href="mailto:contact@folada.com" className="text-white hover:text-amber-400 transition-colors">
+                      {t('contactfoot.email')}
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-slate-800 p-2 rounded-lg mr-4">
+                    <MapPin className="w-5 h-5 text-amber-400" />
+                  </div>
+                  <div>
+                    <p className="text-slate-400 text-sm">{t('contactfoot.location_label')}</p>
+                    <p className="text-white">{t('contactfoot.location')}</p>
+                  </div>
+                </div>
+                
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white px-12 py-4 text-lg group cursor-pointer font-medium">
-                      {t('hero.btn_start')}
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <Button className="mt-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-400 hover:from-amber-500/20 hover:to-orange-500/20 hover:text-white transition-all">
+                      {t('contactfoot.schedule_call')}
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-black/90 border-red-900/50 text-white backdrop-blur-xl">
+                  <DialogContent className="bg-slate-900 border-slate-700 text-white">
                     <DialogHeader>
-                      <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                      <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                         {t('contact.schedule_consultation')}
                       </DialogTitle>
                     </DialogHeader>
                     <ContactForm />
                   </DialogContent>
                 </Dialog>
-                <Button onClick={() => scrollToSection('portfolio')} size="lg" variant="outline" className="border-red-800/30 text-red-200 hover:bg-red-900/20 px-12 py-4 text-lg group cursor-pointer font-medium">
-                  <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                  {t('hero.btn_explore')}
-                </Button>
-              </div>
-
-              {/* Enhanced Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {statItems}
               </div>
             </div>
           </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="w-6 h-6 text-red-400/60" />
-          </div>
-        </section>
-
-        {/* Social Proof Section */}
-        <section className="py-20 bg-black/30 backdrop-blur-sm">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-red-100">{t('social_proof.heading')}</h2>
-              <p className="text-red-200 text-lg">{t('social_proof.description')}</p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60">
-              {['EnergoSun', 'PhotographySF', 'Tergi', 'Coolstack', 'PrimeDrive'].map((brand, index) => (
-                <div key={index} className="text-center transform hover:scale-105 transition-transform">
-                  <div className="text-2xl font-bold text-red-300/40 hover:text-red-300/60 transition-colors cursor-pointer">{brand}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <ServicesSection/>
-        <PortfolioSection/>
-        <AboutSection/>
-        <PricingSection/>
-
-        {/* Testimonials Section */}
-        <section className="py-20 bg-black/20 backdrop-blur-sm">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-red-100">{t('testimonials.heading')}</h2>
-              <p className="text-red-200 text-lg">{t('testimonials.description')}</p>
-            </div>
-
-            <div className="relative max-w-3xl mx-auto">
-              <Carousel opts={{ loop: true }}>
-                <CarouselContent>
-                  {testimonialItems}
-                </CarouselContent>
-                <CarouselPrevious className="-left-6 top-1/2 -translate-y-1/2 border-red-800/50 text-red-400 hover:bg-red-900/30" />
-                <CarouselNext className="-right-6 top-1/2 -translate-y-1/2 border-red-800/50 text-red-400 hover:bg-red-900/30" />
-              </Carousel>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-red-900/20 to-red-950/20 backdrop-blur-sm">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-5xl font-bold mb-6 text-red-100">
-              {t('cta.heading')}
-            </h2>
-            <p className="text-xl text-red-200 mb-8 max-w-2xl mx-auto">
-              {t('cta.description')}
+          
+          {/* Divider */}
+          <div className="border-t border-slate-800/50 my-10"></div>
+          
+          {/* Bottom Row */}
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-slate-500 text-sm">
+              {t('copyright', { year: new Date().getFullYear() })}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="bg-gradient-to-r from-red-700 to-red-900 hover:from-red-800 hover:to-red-950 text-white px-8 py-4 text-lg cursor-pointer">
-                    {t('cta.btn_strategy')}
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="bg-black/90 border-red-900/50 text-white backdrop-blur-xl">
-                  <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                      {t('contact.schedule_consultation')}
-                    </DialogTitle>
-                  </DialogHeader>
-                  <ContactForm />
-                </DialogContent>
-              </Dialog>
-              <Button size="lg" variant="outline" className="border-red-800/30 text-red-200 hover:bg-red-900/20 px-8 py-4 text-lg cursor-pointer" onClick={() => scrollToSection('portfolio')}>
-                {t('cta.btn_portfolio')}
-              </Button>
-            </div>
-
-            <div className="flex items-center justify-center space-x-6 text-sm text-red-300">
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2 text-red-400" />
-                {t('cta.benefits.presence')}
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2 text-red-400" />
-                {t('cta.benefits.contracts')}
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2 text-red-400" />
-                {t('cta.benefits.guarantee')}
-              </div>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-slate-500 hover:text-amber-400 text-sm transition-colors">
+                {t('policy.privacy')}
+              </a>
+              <a href="#" className="text-slate-500 hover:text-amber-400 text-sm transition-colors">
+                {t('policy.terms')}
+              </a>
+              <a href="#" className="text-slate-500 hover:text-amber-400 text-sm transition-colors">
+                {t('policy.cookies')}
+              </a>
             </div>
           </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-16 bg-gradient-to-br from-black to-red-950/20 border-t border-red-900/30">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-              {/* Brand Column */}
-              <div className="lg:col-span-2">
-                <div className="flex items-center mb-6">
-                  <div className="text-3xl font-bold bg-gradient-to-r from-red-400 via-red-600 to-red-800 bg-clip-text text-transparent">
-                    {t('brand')}
-                  </div>
-                  <div className="ml-4 w-1 h-8 bg-gradient-to-b from-red-500 to-red-700"></div>
-                </div>
-                <p className="text-red-200 mb-6 max-w-md text-lg">
-                  {t('footer.description')}
-                </p>
-                
-                {/* Social Links */}
-                <div className="flex space-x-5">
-                  {['twitter', 'linkedin', 'dribbble', 'github'].map((platform) => (
-                    <a 
-                      key={platform}
-                      href="#" 
-                      className="w-10 h-10 rounded-full bg-black/50 flex items-center justify-center hover:bg-gradient-to-r from-red-600 to-red-800 transition-all duration-300"
-                    >
-                      <div className="bg-red-300/20 border-2 border-dashed rounded-xl w-6 h-6" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Contact Column */}
-              <div>
-                <h4 className="font-bold text-lg mb-6 pb-2 border-b border-red-900/50 text-red-100 flex items-center">
-                  <Zap className="w-5 h-5 mr-2 text-red-400" />
-                  {t('contactfoot.schedule_consultation')}
-                </h4>
-                <div className="space-y-5">
-                  <div className="flex items-start">
-                    <div className="bg-black/50 p-2 rounded-lg mr-4">
-                      <Mail className="w-5 h-5 text-red-400" />
-                    </div>
-                    <div>
-                      <p className="text-red-300 text-sm">{t('contactfoot.email_label')}</p>
-                      <a href="mailto:contact@folada.com" className="text-red-100 hover:text-red-400 transition-colors">
-                        {t('contactfoot.email')}
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-black/50 p-2 rounded-lg mr-4">
-                      <MapPin className="w-5 h-5 text-red-400" />
-                    </div>
-                    <div>
-                      <p className="text-red-300 text-sm">{t('contactfoot.location_label')}</p>
-                      <p className="text-red-100">{t('contactfoot.location')}</p>
-                    </div>
-                  </div>
-                  
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="mt-4 bg-gradient-to-r from-red-900/20 to-red-800/20 border border-red-800/30 text-red-300 hover:from-red-800/30 hover:to-red-700/30 hover:text-red-100 transition-all">
-                        {t('contactfoot.schedule_call')}
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="bg-black/90 border-red-900/50 text-white backdrop-blur-xl">
-                      <DialogHeader>
-                        <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                          {t('contact.schedule_consultation')}
-                        </DialogTitle>
-                      </DialogHeader>
-                      <ContactForm />
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              </div>
-            </div>
-            
-            {/* Divider */}
-            <div className="border-t border-red-900/30 my-10"></div>
-            
-            {/* Bottom Row */}
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-red-400 text-sm">
-                {t('copyright', { year: new Date().getFullYear() })}
-              </p>
-              
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" className="text-red-500 hover:text-red-300 text-sm transition-colors">
-                  {t('policy.privacy')}
-                </a>
-                <a href="#" className="text-red-500 hover:text-red-300 text-sm transition-colors">
-                  {t('policy.terms')}
-                </a>
-                <a href="#" className="text-red-500 hover:text-red-300 text-sm transition-colors">
-                  {t('policy.cookies')}
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
+        </div>
+      </footer>
     </div>
   );
 };
