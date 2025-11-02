@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Folada | Elite Web Agency for High-Growth Businesses and Startups</title>
-    <meta name="description" content="Transform your startup into a market leader with AuraPulse's data-driven social media strategies. 500% average ROI. Get your free strategy session today." />
-    <meta name="author" content="AuraPulse Digital Forge" />
-    <meta name="keywords" content="web agency, digital marketing, social media, startups, high-growth businesses, data-driven strategies, ROI, free strategy session" />
+    <title>Folada | ვებ სააგენტო სწრაფად მასშტაბირებადი ბიზნესებისა და სტარტაპებისთვის</title>
+    <meta name="description" content="გადაიქციეთ თქვენი სტარტაპი ბაზრის ლიდერად Folada-ის მონაცემებზე დაფუძნებული ციფრული სტრატეგიებით. საშუალოდ 500% ROI. მიიღეთ თქვენი უფასო სტრატეგიული სესია დღესვე." />
+    <meta name="author" content="Folada Digital Forge" />
+    <meta name="keywords" content="ვებ სააგენტო, ციფრული მარკეტინგი, სოციალური მედია, სტარტაპები, სწრაფად განვითარებადი ბიზნესები, მონაცემებზე დაფუძნებული სტრატეგიები, ROI, უფასო სტრატეგიული სესია" />
     
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,18 +31,139 @@
     <!-- Preconnect for critical third-party resources -->
     <link rel="preconnect" href="https://www.google-analytics.com" />
     
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      /* Minimal critical CSS for hero section */
+      body {
+        margin: 0;
+        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        background-color: #020617;
+        color: #fff;
+      }
+      
+      .hero-minimal {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      
+      .hero-text-top {
+        font-size: 1.25rem;
+        font-weight: 300;
+        opacity: 0.9;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-text-center {
+        font-size: 3rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        margin: 1rem 0;
+        text-transform: uppercase;
+      }
+      
+      .hero-text-bottom {
+        font-size: 1.1rem;
+        font-weight: 300;
+        opacity: 0.8;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+      }
+      
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .btn-primary {
+        background-color: #3b82f6;
+        color: white;
+      }
+      
+      .btn-secondary {
+        background-color: transparent;
+        color: #94a3b8;
+        border: 1px solid #334155;
+      }
+      
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      
+      .language-switcher {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 0.5rem;
+      }
+      
+      .lang-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+      
+      .lang-btn.active {
+        background: #3b82f6;
+      }
+      
+      /* Hide non-critical content initially */
+      .non-critical {
+        display: none;
+      }
+      
+      @media (max-width: 768px) {
+        .hero-text-center {
+          font-size: 2rem;
+        }
+        
+        .hero-text-bottom {
+          font-size: 1rem;
+        }
+        
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://folada.dev" />
     <meta property="og:title" content="Folada | Elite Web Agency for High-Growth Businesses and Startups" />
-    <meta property="og:description" content="Transform your startup into a market leader with AuraPulse's data-driven social media strategies. 500% average ROI." />
+    <meta property="og:description" content="Transform your startup into a market leader with Folada's data-driven digital strategies. 500% average ROI." />
     <meta property="og:image" content="/logo.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://folada.dev" />
     <meta property="twitter:title" content="Folada | Elite Web Agency for High-Growth Businesses and Startups" />
-    <meta property="twitter:description" content="Transform your startup into a market leader with AuraPulse's data-driven social media strategies. 500% average ROI." />
+    <meta property="twitter:description" content="Transform your startup into a market leader with Folada's data-driven digital strategies. 500% average ROI." />
     <meta property="twitter:image" content="/logo.png" />
     
     <!-- Performance hints -->
@@ -51,24 +172,82 @@
     
     <!-- Resource hints for performance -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
-    
-    <!-- Prefetch key resources -->
-    <link rel="prefetch" href="/photography.png" />
-    <link rel="prefetch" href="/tergi.png" />
-    <link rel="prefetch" href="/movix.png" />
-    <link rel="prefetch" href="/energosun.png" />
-    <link rel="prefetch" href="/shushabandi.png" />
-    <link rel="prefetch" href="/hotel.png" />
-    <script type="module" crossorigin src="/assets/index-BKZlCb-O.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/vendor-CuyaVKA-.js">
-    <link rel="modulepreload" crossorigin href="/assets/animations-BKW1x73Z.js">
-    <link rel="modulepreload" crossorigin href="/assets/i18n-oyUO593q.js">
-    <link rel="modulepreload" crossorigin href="/assets/ui-CLcV02id.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-BgAJ6wS0.css">
+    <script type="module" crossorigin src="/assets/index-DaADgLzn.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-L2CS3KsU.js">
+    <link rel="modulepreload" crossorigin href="/assets/animations-BkPkqFig.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-JOVp9vH2.js">
+    <link rel="modulepreload" crossorigin href="/assets/i18n-DmlhXSSZ.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Bi5kaFVe.css">
   </head>
 
   <body>
     <!-- Add loading attribute to root div for performance -->
-    <div id="root" loading="lazy"></div>
+    <div id="root">
+      <!-- Minimal hero content for FCP -->
+      <div class="hero-minimal">
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ka">KA</button>
+        </div>
+        
+        <div class="hero-content-en">
+          <div class="hero-text-top">Unleash Your Digital Potential</div>
+          <div class="hero-text-center">F O L A D A</div>
+          <div class="hero-text-bottom">We create exceptional websites, effective marketing, strong content strategies, and unforgettable brand identities. Let's grow your business together.</div>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Start a Project</a>
+            <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
+          </div>
+        </div>
+        
+        <div class="hero-content-ka" style="display: none;">
+          <div class="hero-text-top">გაათავისუფლე შენი ციფრული პოტენციალი</div>
+          <div class="hero-text-center">F O L A D A</div>
+          <div class="hero-text-bottom">ვქმნით გამორჩეულ ვებსაიტებს, ეფექტურ მარკეტინგს, ძლიერ კონტენტ სტრატეგიას და დაუვიწყარ ბრენდის იდენტობას. ერთად გავზარდოთ თქვენი ბიზნესი.</div>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">დაიწყე პროექტი</a>
+            <a href="#portfolio" class="btn btn-secondary">ნახე ნამუშევრები</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Simple language switching functionality - defer execution until after page load
+      function initLanguageSwitcher() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const enContent = document.querySelector('.hero-content-en');
+        const kaContent = document.querySelector('.hero-content-ka');
+        
+        if (!langButtons.length || !enContent || !kaContent) return;
+        
+        langButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            
+            // Update active button
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show/hide content based on language
+            if (lang === 'en') {
+              enContent.style.display = 'block';
+              kaContent.style.display = 'none';
+            } else {
+              enContent.style.display = 'none';
+              kaContent.style.display = 'block';
+            }
+          });
+        });
+      }
+      
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+      } else {
+        initLanguageSwitcher();
+      }
+    </script>
+    
   </body>
 </html>

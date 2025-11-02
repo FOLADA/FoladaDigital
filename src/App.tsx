@@ -1,94 +1,33 @@
-// src/App.tsx
-import { Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'
+import HeroSection from './components/HeroSection';
+import CompanyLogos from './components/CompanyLogos';
+import Services from './components/Services';
+import WhyUs from './components/WhyUs';
+import FAQ from './components/FAQ';
+import Footer from './components/Footer';
+import CalculatorPage from './pages/CalculatorPage';
 
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-
-// Lazy load components for better performance
-import { lazy, Suspense as ReactSuspense } from "react";
-
-const Index = lazy(() => import("./pages/Index"));
-const UnderConstruction = lazy(() => import("./pages/UnderConstruction"));
-const NotFound = lazy(() => import("./pages/NotFound"));
-
-import { useTranslation } from "react-i18next";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
-      gcTime: 10 * 60 * 1000, // 10 minutes
-      retry: 1,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
-
-/* ---------- optional floating language switcher ---------- */
-const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
-  const langs = ["en", "ka", "ru"];
-
+function App() {
   return (
-    <div className="fixed top-4 right-4 z-[9999] flex gap-2">
-      {langs.map((lng) => (
-        <button
-          key={lng}
-          onClick={() => i18n.changeLanguage(lng)}
-          className={`px-2 py-1 text-xs rounded-md border
-            ${
-              i18n.resolvedLanguage === lng
-                ? "bg-amber-500 text-white border-amber-500"
-                : "bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700"
-            }`}
-        >
-          {lng.toUpperCase()}
-        </button>
-      ))}
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <HeroSection />
+            <CompanyLogos />
+            <Services />
+            <WhyUs />
+            <FAQ />
+            <Footer />
+          </>
+        } />
+        <Route path="/კალკულატორი" element={<CalculatorPage />} />
+      </Routes>
     </div>
   );
-};
-/* -------------------------------------------------------- */
-
-// Loading component for lazy loading
-const LoadingFallback = () => (
-  <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950 flex items-center justify-center">
-    <div className="w-16 h-16 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-
-      {/* Suspense lets react‑i18next wait for JSON files the first time */}
-      <ReactSuspense fallback={<LoadingFallback />}>
-        {/* optional global language switch */}
-        <LanguageSwitcher />
-
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={
-              <ReactSuspense fallback={<LoadingFallback />}>
-                <UnderConstruction />
-              </ReactSuspense>
-            } />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH‑ALL "*" ROUTE */}
-            <Route path="*" element={
-              <ReactSuspense fallback={<LoadingFallback />}>
-                <NotFound />
-              </ReactSuspense>
-            } />
-          </Routes>
-        </BrowserRouter>
-      </ReactSuspense>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+}
 
 export default App;

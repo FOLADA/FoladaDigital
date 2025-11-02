@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,9 +19,11 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				'hero': ['Hero', 'sans-serif'],
+				'copy': ['Copy', 'sans-serif'],
 				'playfair': ['Playfair Display', 'serif'],
 				'outfit': ['Outfit', 'sans-serif'],
-				'sans': ['Outfit', 'system-ui', 'sans-serif'],
+				'sans': ['Hero', 'Outfit', 'system-ui', 'sans-serif'],
 				'serif': ['Playfair Display', 'serif'],
 			},
 			colors: {

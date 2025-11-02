@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
 import './i18n'; // 🧠 THIS LINE INITIALIZES THE TRANSLATIONS
@@ -13,6 +14,13 @@ if ('serviceWorker' in navigator) {
 // Enable React concurrent features
 const rootElement = document.getElementById("root");
 if (rootElement) {
+  // Remove the minimal content that was in index.html
+  rootElement.innerHTML = '';
+  
   const root = createRoot(rootElement);
-  root.render(<App />);
+  root.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
 }
