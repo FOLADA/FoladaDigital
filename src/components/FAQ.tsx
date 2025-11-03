@@ -39,14 +39,14 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-20 bg-black w-full">
+    <section className="py-16 sm:py-20 bg-black w-full">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
             ხშირად დასმული კითხვები
           </h2>
-          <div className="flex justify-center mt-8">
-            <div className="w-24 h-1 bg-red-600 rounded-full"></div>
+          <div className="flex justify-center mt-6 sm:mt-8">
+            <div className="w-16 sm:w-24 h-1 bg-red-600 rounded-full"></div>
           </div>
         </div>
 
@@ -54,16 +54,16 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="mb-6 border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-red-600"
+              className="mb-4 sm:mb-6 border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-red-600"
             >
               <button
-                className="w-full flex justify-between items-center p-8 text-left bg-gray-900 hover:bg-gray-800 transition-colors duration-300"
+                className="w-full flex justify-between items-center p-4 sm:p-8 text-left bg-gray-900 hover:bg-gray-800 transition-colors duration-300"
                 onClick={() => toggleAccordion(index)}
               >
-                <h3 className="text-2xl font-semibold text-white font-copy">{faq.question}</h3>
+                <h3 className="text-lg sm:text-2xl font-semibold text-white font-copy">{faq.question}</h3>
                 <div className="ml-4 flex-shrink-0">
                   <svg 
-                    className={`w-8 h-8 text-red-500 transform transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
+                    className={`w-6 h-6 sm:w-8 sm:h-8 text-red-500 transform transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -78,8 +78,8 @@ const FAQ = () => {
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="p-8 bg-gray-900">
-                  <p className="text-gray-300 text-xl font-copy">{faq.answer}</p>
+                <div className="p-4 sm:p-8 bg-gray-900">
+                  <p className="text-gray-300 text-base sm:text-xl font-copy">{faq.answer}</p>
                 </div>
               </div>
             </div>

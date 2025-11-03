@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+      screens: {
+        'xs': '475px',
+      },
 			fontFamily: {
 				'hero': ['Hero', 'sans-serif'],
 				'copy': ['Copy', 'sans-serif'],
