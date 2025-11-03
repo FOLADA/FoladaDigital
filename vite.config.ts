@@ -5,6 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Add base path for production deployment
+  base: '/',
   server: {
     host: "::",
     port: 8080,
@@ -19,6 +21,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Add assetsInclude setting to properly handle WebP, PNG, JPG, and TTF files
+  assetsInclude: ['**/*.webp', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.ttf'],
   // Add build optimizations
   build: {
     rollupOptions: {

@@ -16,7 +16,7 @@ const WhyUs = () => {
         "Folada-მ სრულიად ნულიდან ამიწყო Edutech სტარტაპი. ჯერ 1 თვე გავიდა და უკვე 400 მომხმარებელი გვყავს.",
       name: "Saba Foladasvhili",
       designation: "CEO at Tergi",
-      src: "./SabaFoladashvili.jpg",
+      src: "/SabaFoladashvili.jpg",
     },
     {
       quote:

@@ -57,7 +57,7 @@ const HeroSection = () => {
         {/* Xalxi Image below buttons */}
         <div className="mt-8 flex flex-col items-center">
           <picture>
-            <source srcset="/xalxi.webp" type="image/webp" />
+            <source srcSet="/xalxi.webp" type="image/webp" />
             <img src="/xalxi.png" alt="xalxi" className="w-40 md:w-48 h-auto" loading="lazy" />
           </picture>
           <div className="flex items-center mt-2">
@@ -69,30 +69,22 @@ const HeroSection = () => {
             <span className="text-white text-base md:text-xl ml-1">4.7 შეფასება</span>
           </div>
           
-          {/* Video Container with Sophisticated Border */}
+          {/* Vimeo Video Container with Sophisticated Border */}
           <div className="mt-8 md:mt-12 mb-8 md:mb-10 relative w-full max-w-4xl">
             {/* Decorative border elements */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-red-800 rounded-lg blur opacity-75"></div>
             <div className="absolute -inset-0.5 bg-gradient-to-r from-red-700 via-red-900 to-red-700 rounded-lg"></div>
             
-            {/* Video container with sophisticated border */}
-            <div className="relative bg-black rounded-lg overflow-hidden border-2 border-red-800 shadow-2xl">
-              {/* Actual video player */}
-              <video 
-                className="w-full h-auto aspect-video"
-                controls
-                preload="metadata"
-                poster="/background.webp"
-              >
-                <source src="/vslvideo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              {/* Decorative corner elements */}
-              <div className="absolute top-2 left-2 w-3 h-3 md:top-3 md:left-3 md:w-5 md:h-5 border-l-2 border-t-2 border-red-500"></div>
-              <div className="absolute top-2 right-2 w-3 h-3 md:top-3 md:right-3 md:w-5 md:h-5 border-r-2 border-t-2 border-red-500"></div>
-              <div className="absolute bottom-2 left-2 w-3 h-3 md:bottom-3 md:left-3 md:w-5 md:h-5 border-l-2 border-b-2 border-red-500"></div>
-              <div className="absolute bottom-2 right-2 w-3 h-3 md:bottom-3 md:right-3 md:w-5 md:h-5 border-r-2 border-b-2 border-red-500"></div>
+            {/* Vimeo Video container with sophisticated border */}
+            <div className="relative bg-black rounded-lg overflow-hidden border-2 border-red-800 shadow-2xl" style={{paddingTop: '56.25%', position: 'relative'}}>
+              <iframe 
+                src="https://player.vimeo.com/video/1133191320?badge=0&autopause=0&player_id=0&app_id=58479" 
+                frameBorder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin"
+                style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
+                title="vslvideo"
+              ></iframe>
             </div>
           </div>
         </div>
