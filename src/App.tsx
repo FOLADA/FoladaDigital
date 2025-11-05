@@ -8,10 +8,11 @@ import WhyUs from './components/WhyUs';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CalculatorPage from './pages/CalculatorPage';
+import Pricing from './components/Pricing';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+    <div className="min-h-screen text-white">
       <Navbar/>
       <Routes>
         <Route path="/" element={
@@ -19,6 +20,7 @@ function App() {
             <HeroSection />
             <CompanyLogos />
             <Services />
+            <Pricing />
             <WhyUs />
             <FAQ />
             <Footer />

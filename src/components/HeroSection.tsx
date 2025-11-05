@@ -12,7 +12,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-start justify-center pt-16 md:pt-24 lg:pt-32 relative overflow-hidden">
+    <section className="min-h-screen flex items-start justify-center pt-16 md:pt-24 lg:pt-32 relative overflow-hidden z-0">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -22,7 +22,7 @@ const HeroSection = () => {
           backgroundPosition: 'center'
         }}
       >
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
       
       {/* Content */}
@@ -57,40 +57,40 @@ const HeroSection = () => {
         <div className="mt-8 flex flex-col items-center">
           <picture>
             <source srcSet="/xalxi.webp" type="image/webp" />
-            <img src="/xalxi.png" alt="xalxi" className="w-48 xs:w-52 sm:w-60 md:w-48 h-auto" loading="lazy" />
+            <img src="/xalxi.png" alt="xalxi" className="w-64 xs:w-72 sm:w-80 md:w-64 h-auto" loading="lazy" />
           </picture>
           <div className="flex items-center mt-2">
-            <FaStar className="text-yellow-400 text-base xs:text-lg md:text-xl" />
-            <FaStar className="text-yellow-400 text-base xs:text-lg md:text-xl" />
-            <FaStar className="text-yellow-400 text-base xs:text-lg md:text-xl" />
-            <FaStar className="text-yellow-400 text-base xs:text-lg md:text-xl" />
-            <FaStar className="text-yellow-400 text-base xs:text-lg md:text-xl" />
-            <span className="text-white text-sm xs:text-base md:text-xl ml-1">4.7 შეფასება</span>
+            <FaStar className="text-yellow-400 text-xl xs:text-2xl md:text-3xl" />
+            <FaStar className="text-yellow-400 text-xl xs:text-2xl md:text-3xl" />
+            <FaStar className="text-yellow-400 text-xl xs:text-2xl md:text-3xl" />
+            <FaStar className="text-yellow-400 text-xl xs:text-2xl md:text-3xl" />
+            <FaStar className="text-yellow-400 text-xl xs:text-2xl md:text-3xl" />
+            <span className="text-white text-lg xs:text-xl md:text-3xl ml-1">4.7 შეფასება</span>
           </div>
           
           {/* Vimeo Video Container with Sophisticated Border */}
-<div className="mt-8 md:mt-12 mb-8 md:mb-10 w-full max-w-6xl mx-auto">
-  {/* Decorative border wrapper */}
-  <div className="relative p-1 rounded-lg bg-gradient-to-br from-red-600 via-red-500 to-red-700">
-    {/* Corner accents */}
-    <div className="absolute -top-2 -left-2 w-8 h-8 border-t-4 border-l-4 border-red-600 rounded-tl-lg z-20"></div>
-    <div className="absolute -top-2 -right-2 w-8 h-8 border-t-4 border-r-4 border-red-600 rounded-tr-lg z-20"></div>
-    <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-4 border-l-4 border-red-600 rounded-bl-lg z-20"></div>
-    <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-4 border-r-4 border-red-600 rounded-br-lg z-20"></div>
-    
-    {/* Video container */}
-    <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black">
-      <iframe 
-        className="absolute inset-0 w-full h-full"
-        src="https://player.vimeo.com/video/1133191320?title=0&byline=0&portrait=0&badge=0&autopause=0" 
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-        allowFullScreen
-        referrerPolicy="strict-origin-when-cross-origin"
-        title="vslvideo"
-      ></iframe>
-    </div>
-  </div>
-</div>
+          <div className="mt-8 md:mt-12 mb-8 md:mb-10 w-full max-w-6xl mx-auto">
+            {/* Decorative border wrapper */}
+            <div className="relative p-1 rounded-lg bg-gradient-to-br from-red-600 via-red-500 to-red-700">
+              {/* Corner accents */}
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-4 border-l-4 border-red-600 rounded-tl-lg z-20 hidden sm:block"></div>
+              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-4 border-r-4 border-red-600 rounded-tr-lg z-20 hidden sm:block"></div>
+              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-4 border-l-4 border-red-600 rounded-bl-lg z-20 hidden sm:block"></div>
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-4 border-r-4 border-red-600 rounded-br-lg z-20 hidden sm:block"></div>
+              
+              {/* Video container */}
+              <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black">
+                <iframe 
+                  className="absolute inset-0 w-full h-full"
+                  src="https://player.vimeo.com/video/1133191320?title=0&byline=0&portrait=0&badge=0&autopause=0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="vslvideo"
+                ></iframe>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

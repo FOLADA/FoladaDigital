@@ -6,32 +6,32 @@ const Services = () => {
 
   const services = [
     {
-      image: "/webdevelopmentservice.webp",
+      image: "/webdevelopmentservice.png",
       title: "ვებსაიტის დამზადება",
-      description: "შევქმნით თანამედროვე და მობილურ მოწყობილობებზე მორგებულ ვებსაიტს, რომელიც თქვენს ბიზნესს გამორჩეულად წარმოაჩენს და ვიზიტორებს კლიენტებად აქცევს"
+      description: "შევქმნით თანამედროვე და მობილურ მოწყობილობებზე მორმებულ ვებსაიტს, რომელიც თქვენს ბიზნესს გამორჩეულად წარმოაჩენს და ვიზიტორებს კლიენტებად აქცევს"
     },
     {
-      image: "/SMMservice.webp",
+      image: "/SMMservice.png",
       title: "სოც. გვერდების მართვა",
       description: "ვმართავთ თქვენს ნაცვლად თქვენს ბრენდს ინტერნეტში – ვქმნით პოსტებს, ვმუშაობთ ვიზუალზე და ვზრუნავთ თქვენი გვერდების აუდიტორიის ზრდაზე"
     },
     {
-      image: "/PaidAds.webp",
+      image: "/PaidAds.png",
       title: "ფასიანი რეკლამები",
       description: "ვმართავთ Facebook და Instagram რეკლამებს, ვაოპტიმიზირებთ და ვნერგავთ თქვენს ბიზნესში გაყიდვების სისტემას"
     },
     {
-      image: "/AIintegrationservice.webp",
+      image: "/AIintegrationservice.png",
       title: "AI ინტეგრაცია",
       description: "ვნერგავთ ხელოვნურ ინტელექტს თქვენს პროცესებში, რათა დაზოგოთ დრო, ავტომატიზიროთ და გაზარდოთ გაყიდვები"
     },
     {
-      image: "/SEOService.webp",
+      image: "/SEOService.png",
       title: "SEO ოპტიმიზაცია",
       description: "ვაუმჯობესებთ თქვენს ვებსაიტს საძიებო სისტემის ოპტიმიზაციით, რათა გამოჩნდეთ Google-ის შედეგების პირველ გვერდზე და მიიღოთ ორგანული ტრაფიკი უფასოდ"
     },
     {
-      image: "/GraphicDesign.webp",
+      image: "/GraphicDesign.png",
       title: "გრაფიკული დიზაინი",
       description: "ვქმნით კრეატიული, ორიგინალურ და პროფესიონალურ ვიზუალებს, რომლებიც თქვენს ბრენდს გამორჩეულს გახდის – ლოგო, ქავერი, პოსტები და სხვა"
     }
@@ -80,7 +80,7 @@ const Services = () => {
     <section id="services" className="py-16 bg-black">
       <div className="container mx-auto px-4">
         <div ref={sectionRef} className="text-center mb-16">
-           <h2 className="text-7xl md:text-8xl font-bold text-center bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent mb-24">
+           <h2 className="text-7xl md:text-8xl font-bold text-center bg-gradient-to-r from-[rgb(255,0,0)] to-[rgb(255,0,0)] bg-clip-text text-transparent mb-24">
           რას გთავაზობთ?
         </h2>
         </div>
@@ -100,15 +100,11 @@ const Services = () => {
               }}
             >
               <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full overflow-hidden border-4 border-red-500 bg-slate-900 shadow-lg">
-                <picture>
-                  <source srcset={service.image} type="image/webp" />
-                  <img 
-                    src={service.image.replace('.webp', '.png')} 
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </picture>
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-3xl font-bold mb-6 text-white pl-24">
                 {service.title}

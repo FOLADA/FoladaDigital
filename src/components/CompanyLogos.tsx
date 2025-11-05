@@ -16,13 +16,13 @@ const CompanyLogos = () => {
   ];
 
   return (
-    <section className=" bg-black w-full">
+    <section className="bg-black w-full">
       <div className="px-4">
         
         {/* Infinite scrolling logo carousel */}
-        <div className="relative overflow-hidden py-8 mx-0 px-0">
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
+        <div className="relative overflow-hidden py-6 sm:py-8 mx-0 px-0">
+          <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
           
           <motion.div 
             className="flex"
@@ -37,8 +37,8 @@ const CompanyLogos = () => {
             {logos.map((logo) => (
               <div 
                 key={`first-${logo.id}`} 
-                className="flex-shrink-0 mx-8 flex items-center justify-center"
-                style={{ width: '150px', height: '90px' }}
+                className="flex-shrink-0 mx-4 sm:mx-8 flex items-center justify-center"
+                style={{ width: '80px', height: '60px', minWidth: '80px' }}
               >
                 <img 
                   src={logo.src} 
@@ -52,8 +52,8 @@ const CompanyLogos = () => {
             {logos.map((logo) => (
               <div 
                 key={`second-${logo.id}`} 
-                className="flex-shrink-0 mx-8 flex items-center justify-center"
-                style={{ width: '150px', height: '80px' }}
+                className="flex-shrink-0 mx-4 sm:mx-8 flex items-center justify-center"
+                style={{ width: '80px', height: '60px', minWidth: '80px' }}
               >
                 <img 
                   src={logo.src} 

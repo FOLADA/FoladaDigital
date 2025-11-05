@@ -358,11 +358,21 @@ const CalculatorPage: React.FC = () => {
 
   // Handle service selection
   const toggleService = (serviceId: string) => {
-    setSelectedServices(prev => 
-      prev.includes(serviceId) 
-        ? prev.filter(id => id !== serviceId) 
-        : [...prev, serviceId]
-    );
+    if (packageType === 'individual') {
+      // For individual package, only allow one service selection
+      if (selectedServices.includes(serviceId)) {
+        setSelectedServices([]);
+      } else {
+        setSelectedServices([serviceId]);
+      }
+    } else {
+      // For unified package, allow multiple selections
+      setSelectedServices(prev => 
+        prev.includes(serviceId) 
+          ? prev.filter(id => id !== serviceId) 
+          : [...prev, serviceId]
+      );
+    }
   };
 
   // Handle answer changes
@@ -489,7 +499,7 @@ const CalculatorPage: React.FC = () => {
       >
         <Sparkles className="w-16 h-16 text-red-500 mx-auto mb-6" />
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          ფასის გამოთვლის ქვიზი
+          გამოთვალეთ ფასი
         </h1>
         <p className="text-xl text-gray-300 mb-8 font-copy">
           პასუხების გაცემით რამდენიმე კითხვაზე, მიიღებთ პერსონალიზებულ ფასს თქვენი პროექტისთვის
@@ -499,7 +509,7 @@ const CalculatorPage: React.FC = () => {
           className="bg-red-600 hover:bg-red-700 text-white mx-5 px-8 py-6 text-xl rounded-full font-copy"
           onClick={nextStep}
         >
-          ქვიზის დაწყება
+          დაწყება
           <ArrowRight className="ml-2 w-5 h-5" />
         </Button>
       </motion.div>
@@ -524,7 +534,11 @@ const CalculatorPage: React.FC = () => {
                 ? 'bg-red-600 text-white'
                 : 'text-gray-300 hover:text-white'
             }`}
-            onClick={() => setPackageType('individual')}
+            onClick={() => {
+              setPackageType('individual');
+              // Clear selections when switching to individual package
+              setSelectedServices([]);
+            }}
           >
             ინდივიდუალური სერვისები
           </button>
@@ -809,6 +823,15 @@ const CalculatorPage: React.FC = () => {
         <p className="text-xl text-gray-300 font-copy">
           რომ შევძლოთ თქვენთან დაკავშირება და უფრო დეტალურად განვიხილოთ თქვენი პროექტი
         </p>
+        <div className="bg-slate-800 rounded-xl p-6 mt-6 inline-block">
+          <h3 className="text-2xl font-bold mb-2 font-copy">თქვენი პროექტის დაახლოებითი ფასი</h3>
+          <div className="text-4xl font-bold text-red-500">{Math.round(totalPrice)}₾</div>
+          {discount > 0 && (
+            <p className="text-green-400 mt-2 font-copy">
+              ფასდაკლება: {discount}%
+            </p>
+          )}
+        </div>
       </div>
 
       <Card className="bg-slate-900/50 border-slate-800">
@@ -955,13 +978,13 @@ const CalculatorPage: React.FC = () => {
           <CheckCircle className="w-24 h-24 text-green-500 mx-auto mb-6" />
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-copy">გმადლობთ!</h2>
           <p className="text-xl text-gray-300 mb-8 font-copy">
-            თქვენი ინფორმაცია წარმატებით გაგზავნილია. ჩვენი გუნდი დაგიკავშირდება 24 საათში.
+            თქვენი ინფორმაცია წარმატებით გაიგზავნა. ჩვენი გუნდი დაგიკავშირდება 24 საათში.
           </p>
           <div className="bg-slate-800 rounded-xl p-6 mb-8">
             <h3 className="text-2xl font-bold mb-4 font-copy">თქვენი პროექტის დაახლოებითი ფასი</h3>
             <div className="text-5xl font-bold text-red-500 mb-2">{Math.round(totalPrice)}₾</div>
             {discount > 0 && (
-              <p className="text-gray-400 font-copy">
+              <p className="text-green-400 font-copy">
                 ფასდაკლება: {discount}%
               </p>
             )}
@@ -1106,7 +1129,7 @@ const CalculatorPage: React.FC = () => {
                   )}
                 </div>
                 <span className="mt-2 text-sm font-medium hidden md:block font-copy">
-                  {stepNumber === 1 && 'მიმდინარეობა'}
+                  {stepNumber === 1 && 'დაწყება'}
                   {stepNumber === 2 && 'სერვისები'}
                   {stepNumber === 3 && 'კითხვები'}
                   {stepNumber === 4 && 'კონტაქტი'}
