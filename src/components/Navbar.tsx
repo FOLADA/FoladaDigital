@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FaPhoneAlt } from 'react-icons/fa'
+import ConsultationModal from './ConsultationModal'
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +84,7 @@ const Navbar: React.FC = () => {
           className="hidden md:block bg-[rgb(255,0,0)] text-white border-rounded rounded-full mr-2 md:mr-4 px-4 py-2 md:px-6 md:py-3 text-sm font-copy font-semibold cursor-pointer transition-all duration-300 hover:bg-red-500 hover:-translate-y-0.5 hover:shadow-lg"
           role="button"
           aria-label="Book a call"
-          onClick={() => scrollToSection('contact')}
+          onClick={() => setIsModalOpen(true)}
         >
            <FaPhoneAlt className='inline-block ml-1'/> კონსულტაცია
         </button>
@@ -124,9 +126,7 @@ const Navbar: React.FC = () => {
             <li>
               <button 
                 className="w-full bg-[rgb(255, 0, 0)] text-white border-none rounded-full px-4 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl font-copy font-semibold cursor-pointer transition-all duration-300 hover:bg-red-600 hover:-translate-y-0.5 hover:shadow-lg mt-2"
-                onClick={() => {
-                  scrollToSection('contact');
-                }}
+                onClick={() => setIsModalOpen(true)}
               >
                 დაჯავშნე შეხვედრა
               </button>
@@ -134,6 +134,8 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
       )}
+      
+      <ConsultationModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </nav>
   );
 };

@@ -8,7 +8,6 @@ import WhyUs from './components/WhyUs';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CalculatorPage from './pages/CalculatorPage';
-import Pricing from './components/Pricing';
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
             <HeroSection />
             <CompanyLogos />
             <Services />
-            <Pricing />
             <WhyUs />
             <FAQ />
             <Footer />

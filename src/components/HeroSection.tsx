@@ -2,8 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { BsGlobe } from "react-icons/bs";
 import { FaCalculator, FaPhoneAlt, FaStar } from "react-icons/fa";
+import { useState } from "react";
+import ConsultationModal from "./ConsultationModal";
 
 const HeroSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const scrollToServices = () => {
     const element = document.getElementById('services');
     if (element) {
@@ -48,6 +52,7 @@ const HeroSection = () => {
             size="lg" 
             variant="outline" 
             className="bg-[rgb(255,0,0)] text-white border-[rgb(255,0,0)] border-2 hover:bg-[rgb(255,0,0)] hover:text-white px-6 py-4 text-lg md:px-12 md:py-6 md:text-3xl rounded-[6px] w-full sm:w-auto"
+            onClick={() => setIsModalOpen(true)}
           >
             <FaPhoneAlt className="inline-block mr-2" /> კონსულტაცია
           </Button>
@@ -93,6 +98,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      
+      <ConsultationModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

@@ -23,6 +23,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useNavigate } from 'react-router-dom';
+import { sendCalculatorEmail } from '@/lib/emailjs';
 
 interface Service {
   id: string;
@@ -476,15 +477,19 @@ const CalculatorPage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // In a real implementation, you would send the data to your backend here
-      // For now, we'll just simulate a successful submission
-      setTimeout(() => {
+      // Send email using EmailJS
+      const result = await sendCalculatorEmail(contactInfo);
+      
+      if (result.success) {
+        console.log('Calculator form submitted:', contactInfo);
         setSubmitSuccess(true);
+      } else {
+        setErrors({ submit: 'დაფიქსირდა შეცდომა გაგზავნისას. გთხოვთ, სცადოთ ხელახლა.' });
         setIsSubmitting(false);
-      }, 1500);
+      }
     } catch (error) {
       console.error('Failed to send email:', error);
-      setErrors({ submit: 'დაფიქსირდა შეცდომა. გთხოვთ, სცადოთ ხელახლა.' });
+      setErrors({ submit: 'დაფიქსირდა შეცდომა გაგზავნისას. გთხოვთ, სცადოთ ხელახლა.' });
       setIsSubmitting(false);
     }
   };
