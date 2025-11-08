@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav 
-      className={`sticky max-w-[1200px] rounded-full top-5 z-50 transition-all duration-300 border border-white/10 mx-auto ${
+      className={`sticky max-w-[1200px] rounded-full top-5 z-50 transition-all duration-300 border border-white/10 mx-auto w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] ${ // Added width constraints to prevent overflow
         scrolled 
           ? 'bg-transparent backdrop-blur-sm shadow-2xl' 
           : 'bg-transparent backdrop-blur-sm'
@@ -61,17 +61,17 @@ const Navbar: React.FC = () => {
           <img 
             src="/logo.png" 
             alt="Elevo Logo" 
-            className="h-16 sm:h-20 w-auto"
+            className="h-12 sm:h-16 md:h-20 w-auto" // Reduced logo size to prevent overflow
           />
         </a>
         
         {/* Desktop Navigation */}
         <ul className="hidden md:flex list-none m-0 p-0">
           {navLinks.map((link, index) => (
-            <li key={index} className="mx-3 lg:mx-5">
+            <li key={index} className="mx-2 lg:mx-3"> {/* Reduced margins to prevent overflow */}
               <a 
                 href={link.href} 
-                className="text-sm md:text-base lg:text-lg font-copy text-white no-underline transition-all duration-300 hover:text-[rgb(255,0,0)] hover:scale-105 block py-3"
+                className="text-sm md:text-base font-copy text-white no-underline transition-all duration-300 hover:text-[rgb(255,0,0)] hover:scale-105 block py-3"
                 onClick={(e) => handleNavClick(link.href, e)}
               >
                 {link.name}
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
         </ul>
         
         <button 
-          className="hidden md:block bg-[rgb(255,0,0)] text-white border-rounded rounded-full mr-2 md:mr-4 px-4 py-2 md:px-6 md:py-3 text-sm font-copy font-semibold cursor-pointer transition-all duration-300 hover:bg-red-500 hover:-translate-y-0.5 hover:shadow-lg"
+          className="hidden md:block bg-[rgb(255,0,0)] text-white border-rounded rounded-full mr-2 md:mr-4 px-4 py-2 text-sm font-copy font-semibold cursor-pointer transition-all duration-300 hover:bg-red-500 hover:-translate-y-0.5 hover:shadow-lg"
           role="button"
           aria-label="Book a call"
           onClick={() => setIsModalOpen(true)}

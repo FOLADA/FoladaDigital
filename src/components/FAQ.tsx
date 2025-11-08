@@ -42,7 +42,8 @@ const FAQ = () => {
     <section id="faq" className="py-16 md:py-20 bg-black w-full">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-8 bg-gradient-to-r from-[rgb(255,0,0)] to-[rgb(255,0,0)] bg-clip-text text-transparent">
+          {/* Reduced font size to prevent overflow */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-8 bg-gradient-to-r from-[rgb(255,0,0)] to-[rgb(255,0,0)] bg-clip-text text-transparent">
             ხშირად დასმული კითხვები
           </h2>
           <div className="flex justify-center mt-6 md:mt-8">
@@ -50,7 +51,8 @@ const FAQ = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        {/* Added max-width constraint to prevent overflow */}
+        <div className="max-w-4xl mx-auto w-full px-4">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
@@ -60,7 +62,8 @@ const FAQ = () => {
                 className="w-full flex justify-between items-center p-6 md:p-8 text-left bg-gray-900 hover:bg-gray-800 transition-colors duration-300"
                 onClick={() => toggleAccordion(index)}
               >
-                <h3 className="text-xl md:text-2xl font-semibold text-white font-copy">{faq.question}</h3>
+                {/* Reduced font size to prevent overflow */}
+                <h3 className="text-lg md:text-xl font-semibold text-white font-copy">{faq.question}</h3>
                 <div className="ml-4 flex-shrink-0">
                   <svg 
                     className={`w-6 h-6 md:w-8 md:h-8 text-[rgb(255,0,0)] transform transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
@@ -79,7 +82,8 @@ const FAQ = () => {
                 }`}
               >
                 <div className="p-6 md:p-8 bg-gray-900">
-                  <p className="text-gray-300 text-base md:text-xl font-copy">{faq.answer}</p>
+                  {/* Reduced font size to prevent overflow */}
+                  <p className="text-gray-300 text-sm md:text-base font-copy">{faq.answer}</p>
                 </div>
               </div>
             </div>

@@ -19,13 +19,13 @@ const CompanyLogos = () => {
     <section className="bg-black w-full">
       <div className="px-4">
         
-        {/* Infinite scrolling logo carousel */}
+        {/* Infinite scrolling logo carousel - Fixed to prevent horizontal overflow */}
         <div className="relative overflow-hidden py-6 sm:py-8 mx-0 px-0">
           <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
           <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
           
           <motion.div 
-            className="flex"
+            className="flex w-max" // Changed from flex to w-max to prevent overflow
             animate={{ x: [0, -1000] }}
             transition={{ 
               duration: 20, 
@@ -38,7 +38,7 @@ const CompanyLogos = () => {
               <div 
                 key={`first-${logo.id}`} 
                 className="flex-shrink-0 mx-4 sm:mx-8 flex items-center justify-center"
-                style={{ width: '80px', height: '60px', minWidth: '80px' }}
+                style={{ width: '80px', height: '60px' }} // Removed minWidth to prevent overflow
               >
                 <img 
                   src={logo.src} 
@@ -53,7 +53,7 @@ const CompanyLogos = () => {
               <div 
                 key={`second-${logo.id}`} 
                 className="flex-shrink-0 mx-4 sm:mx-8 flex items-center justify-center"
-                style={{ width: '80px', height: '60px', minWidth: '80px' }}
+                style={{ width: '80px', height: '60px' }} // Removed minWidth to prevent overflow
               >
                 <img 
                   src={logo.src} 
