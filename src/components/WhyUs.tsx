@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { FaCalculator, FaPhoneAlt } from "react-icons/fa";
 
 const WhyUs = () => {
   const [counters, setCounters] = useState({
@@ -9,6 +12,7 @@ const WhyUs = () => {
   });
 
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const testimonials = [
     {
@@ -297,8 +301,84 @@ const WhyUs = () => {
     </div>
   </div>
 </div>
+
+          {/* Added buttons similar to Hero section */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mt-8">
+            <Link to="/კალკულატორი">
+              <Button 
+                size="lg" 
+                className="border-[rgb(255,255,255)] rounded-[6px] border-2 text-white px-6 py-4 text-lg md:px-9 md:py-6 md:text-2xl w-full sm:w-auto"
+              >
+                <FaCalculator className="inline-block mr-2" /> ფასების გამოთვლა
+              </Button>
+            </Link>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="bg-[rgb(255,0,0)] text-white border-[rgb(255,0,0)] border-2 hover:bg-[rgb(255,0,0)] hover:text-white px-6 py-4 text-lg md:px-12 md:py-6 md:text-2xl rounded-[6px] w-full sm:w-auto"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <FaPhoneAlt className="inline-block mr-2" /> კონსულტაცია
+            </Button>
+          </div>
         </div>
       </div>
+      
+      {/* Consultation Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 rounded-2xl border border-gray-700 p-6 md:p-8 max-w-md w-full">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-white">კონსულტაციის დაჯავშნა</h3>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-400 hover:text-white text-2xl"
+              >
+                &times;
+              </button>
+            </div>
+            <p className="text-gray-300 mb-6">
+              გამოგვიგზავნეთ თქვენი საკონტაქტო ინფორმაცია და ჩვენ დაგიკავშირდებით უმოკლეს ვადებში.
+            </p>
+            <form className="space-y-4">
+              <div>
+                <input 
+                  type="text" 
+                  placeholder="თქვენი სახელი" 
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                />
+              </div>
+              <div>
+                <input 
+                  type="email" 
+                  placeholder="ელ. ფოსტა" 
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                />
+              </div>
+              <div>
+                <input 
+                  type="tel" 
+                  placeholder="ტელეფონის ნომერი" 
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                />
+              </div>
+              <div>
+                <textarea 
+                  placeholder="თქვენი შეტყობინება" 
+                  rows={4}
+                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                ></textarea>
+              </div>
+              <Button 
+                type="submit"
+                className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg font-semibold transition-colors"
+              >
+                გაგზავნა
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

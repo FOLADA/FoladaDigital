@@ -6,6 +6,7 @@ import CompanyLogos from './components/CompanyLogos';
 import Services from './components/Services';
 import WhyUs from './components/WhyUs';
 import FAQ from './components/FAQ';
+import CTA3DSection from './components/CTA3DSection';
 import Footer from './components/Footer';
 import CalculatorPage from './pages/CalculatorPage';
 
@@ -21,6 +22,7 @@ function App() {
             <Services />
             <WhyUs />
             <FAQ />
+            <CTA3DSection />
             <Footer />
           </>
         } />
