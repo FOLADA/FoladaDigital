@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
+import { useNavigate } from 'react-router-dom';
 
 const Portfolio = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const portfolioItems = [
     {
@@ -122,7 +124,10 @@ const Portfolio = () => {
         </div>
 
         <div className="text-center mt-16">
-          <button className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-full hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30">
+          <button 
+            onClick={() => navigate('/portfolio')}
+            className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-full hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30"
+          >
             ყველა პროექტის ნახვა
           </button>
         </div>
