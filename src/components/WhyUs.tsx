@@ -221,86 +221,6 @@ const WhyUs = () => {
               <AnimatedTestimonials testimonials={testimonials} />
             </div>
           </div>
-          
-         {/* Money Back Guarantee Section - Enhanced */}
-<div className="relative w-full max-w-4xl mx-auto mt-12 md:mt-16 px-4"> {/* Reduced max-width */}
-  <div className="relative bg-gradient-to-br from-black via-red-950 to-black rounded-3xl p-1 overflow-hidden shadow-2xl">
-    {/* Animated gradient border effect */}
-    <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 opacity-50 blur-xl animate-pulse"></div>
-    
-    {/* Inner container */}
-    <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-3xl p-6 md:p-8 lg:p-10 overflow-hidden"> {/* Reduced padding */}
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
-      
-      {/* Glow effect behind badge */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-32 h-32 md:w-64 md:h-64 bg-red-600/20 rounded-full blur-3xl"></div> {/* Reduced size */}
-      
-      {/* Content */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-        {/* Text Content */}
-        <div className="md:w-2/3 space-y-4">
-          
-          {/* Main heading */}
-          <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"> {/* Reduced font size */}
-            30 დღიანი
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600"> გარანტია
-            </span>
-          </h2>
-          
-          {/* Description */}
-          <p className="text-gray-300 font-copy text-sm md:text-base lg:text-lg leading-relaxed"> {/* Reduced font size */}
-            თუ ნებისმიერი მიზეზით არ დარჩებით კმაყოფილი, უბრალოდ მოგვწერეთ და <span className="text-white font-semibold">სრულად დაგიბრუნებთ თანხას</span> — ყოველგვარი კითხვის გარეშე.
-          </p>
-          
-          {/* Trust indicators */}
-          <div className="flex flex-wrap gap-3 md:gap-4 pt-2">
-            <div className="flex items-center gap-1 md:gap-2 text-gray-400">
-              <svg className="w-4 h-4 md:w-5 md:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm md:text-base">ავტომატური დაბრუნება</span> {/* Reduced font size */}
-            </div>
-            <div className="flex items-center gap-1 md:gap-2 text-gray-400">
-              <svg className="w-4 h-4 md:w-5 md:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm md:text-base">კითხვების გარეშე</span> {/* Reduced font size */}
-            </div>
-            <div className="flex items-center gap-1 md:gap-2 text-gray-400">
-              <svg className="w-4 h-4 md:w-5 md:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm md:text-base">100% უსაფრთხო</span> {/* Reduced font size */}
-            </div>
-          </div>
-          
-          {/* Legal disclaimer */}
-          <p className="text-xs md:text-sm text-gray-500 pt-2 border-t border-gray-800"> {/* Reduced font size */}
-            * გარანტია მოქმედებს და რეგულირდება საქართველოს კანონმდებლობის შესაბამისად
-          </p>
-        </div>
-        
-        {/* Badge Image */}
-        <div className="md:w-1/3 flex justify-center relative mt-6 md:mt-0">
-          {/* Pulsing glow effect */}
-          <div className="absolute inset-0 bg-red-600/30 rounded-full blur-2xl animate-pulse"></div>
-          
-          {/* Badge container with subtle animation */}
-          <div className="relative transform transition-transform duration-300 hover:scale-105">
-            <img 
-              src="/30moneybackguaranteed.png" 
-              alt="30 დღიანი თანხის დაბრუნების გარანტია" 
-              className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl" // Reduced sizes
-            />
-            {/* Decorative ring */}
-            <div className="absolute inset-0 border-4 border-red-600/20 rounded-full animate-ping" style={{animationDuration: '3s'}}></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
           {/* Added buttons similar to Hero section */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mt-8">
@@ -322,6 +242,106 @@ const WhyUs = () => {
             </Button>
           </div>
         </div>
+      </div>
+      
+      {/* Money Back Guarantee Section - Enhanced */}
+      <div className="relative w-full max-w-4xl mx-auto mt-12 md:mt-16 px-4"> {/* Reduced max-width */}
+        <div className="relative bg-gradient-to-br from-black via-red-950 to-black rounded-3xl p-1 overflow-hidden shadow-2xl">
+          {/* Animated gradient border effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 opacity-50 blur-xl animate-pulse"></div>
+          
+          {/* Inner container */}
+          <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-3xl p-6 md:p-8 lg:p-10 overflow-hidden"> {/* Reduced padding */}
+            {/* Subtle pattern overlay */}
+            <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+            
+            {/* Glow effect behind badge */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-32 h-32 md:w-64 md:h-64 bg-red-600/20 rounded-full blur-3xl"></div> {/* Reduced size */}
+            
+            {/* Content */}
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+              {/* Text Content */}
+              <div className="md:w-2/3 space-y-4">
+                
+                {/* Main heading */}
+                <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"> {/* Reduced font size */}
+                  30 დღიანი
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600"> გარანტია
+                  </span>
+                </h2>
+                
+                {/* Description */}
+                <p className="text-gray-300 font-copy text-sm md:text-base lg:text-lg leading-relaxed"> {/* Reduced font size */}
+                  თუ ნებისმიერი მიზეზით არ დარჩებით კმაყოფილი, უბრალოდ მოგვწერეთ და <span className="text-white font-semibold">სრულად დაგიბრუნებთ თანხას</span> — ყოველგვარი კითხვის გარეშე.
+                </p>
+                
+                {/* Trust indicators */}
+                <div className="flex flex-wrap gap-3 md:gap-4 pt-2">
+                  <div className="flex items-center gap-1 md:gap-2 text-gray-400">
+                    <svg className="w-4 h-4 md:w-5 md:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm md:text-base">ავტომატური დაბრუნება</span> {/* Reduced font size */}
+                  </div>
+                  <div className="flex items-center gap-1 md:gap-2 text-gray-400">
+                    <svg className="w-4 h-4 md:w-5 md:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm md:text-base">კითხვების გარეშე</span> {/* Reduced font size */}
+                  </div>
+                  <div className="flex items-center gap-1 md:gap-2 text-gray-400">
+                    <svg className="w-4 h-4 md:w-5 md:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm md:text-base">100% უსაფრთხო</span> {/* Reduced font size */}
+                  </div>
+                </div>
+                
+                {/* Legal disclaimer */}
+                <p className="text-xs md:text-sm text-gray-500 pt-2 border-t border-gray-800"> {/* Reduced font size */}
+                  * გარანტია მოქმედებს და რეგულირდება საქართველოს კანონმდებლობის შესაბამისად
+                </p>
+              </div>
+              
+              {/* Badge Image */}
+              <div className="md:w-1/3 flex justify-center relative mt-6 md:mt-0">
+                {/* Pulsing glow effect */}
+                <div className="absolute inset-0 bg-red-600/30 rounded-full blur-2xl animate-pulse"></div>
+                
+                {/* Badge container with subtle animation */}
+                <div className="relative transform transition-transform duration-300 hover:scale-105">
+                  <img 
+                    src="/30moneybackguaranteed.png" 
+                    alt="30 დღიანი თანხის დაბრუნების გარანტია" 
+                    className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-72 xl:h-72 object-contain drop-shadow-2xl" // Reduced sizes
+                  />
+                  {/* Decorative ring */}
+                  <div className="absolute inset-0 border-4 border-red-600/20 rounded-full animate-ping" style={{animationDuration: '3s'}}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Added buttons similar to Hero section */}
+      <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mt-8 mb-16">
+        <Link to="/კალკულატორი">
+          <Button 
+            size="lg" 
+            className="border-[rgb(255,255,255)] rounded-[6px] border-2 text-white px-6 py-4 text-lg md:px-9 md:py-6 md:text-2xl w-full sm:w-auto"
+          >
+            <FaCalculator className="inline-block mr-2" /> ფასების გამოთვლა
+          </Button>
+        </Link>
+        <Button 
+          size="lg" 
+          variant="outline" 
+          className="bg-[rgb(255,0,0)] text-white border-[rgb(255,0,0)] border-2 hover:bg-[rgb(255,0,0)] hover:text-white px-6 py-4 text-lg md:px-12 md:py-6 md:text-2xl rounded-[6px] w-full sm:w-auto"
+          onClick={() => setIsModalOpen(true)}
+        >
+          <FaPhoneAlt className="inline-block mr-2" /> კონსულტაცია
+        </Button>
       </div>
       
       {/* Consultation Modal */}

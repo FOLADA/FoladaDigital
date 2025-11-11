@@ -9,6 +9,8 @@ import FAQ from './components/FAQ';
 import CTA3DSection from './components/CTA3DSection';
 import Footer from './components/Footer';
 import CalculatorPage from './pages/CalculatorPage';
+import Portfolio from './components/Portfolio';
+import PortfolioPage from './pages/PortfolioPage';
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
             <HeroSection />
             <CompanyLogos />
             <Services />
+            <Portfolio />
             <WhyUs />
             <FAQ />
             <CTA3DSection />
@@ -27,6 +30,7 @@ function App() {
           </>
         } />
         <Route path="/კალკულატორი" element={<CalculatorPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
       </Routes>
     </div>
   );
