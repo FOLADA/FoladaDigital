@@ -103,40 +103,40 @@ const CalculatorPage: React.FC = () => {
   const serviceQuestions: Record<string, Question[]> = {
     'web-development': [
       {
-        id: 'pages',
-        text: 'რამდენი გვერდი დაგჭირდებათ თქვენი ბიზნესის სრულყოფილად წარმოსაჩენად?',
-        type: 'radio',
-        options: [
-          { label: '1-5 გვერდი', value: 'few', priceModifier: 0 },
-          { label: '6-15 გვერდი', value: 'medium', priceModifier: 500 },
-          { label: '16+ გვერდი', value: 'many', priceModifier: 1500 }
-        ]
-      },
-      {
         id: 'complexity',
-        text: 'რა სირთულის ფუნქციონალი გჭირდებათ თქვენს ვებსაიტზე?',
+        text: 'რა ტიპის ვებსაიტი გინდათ?',
         type: 'radio',
         options: [
-          { label: 'ძირითადი ვებსაიტი (ინფორმაციული)', value: 'basic', priceModifier: 0 },
+          { label: 'საინფორმაციო ვებსაიტი', value: 'basic', priceModifier: 0 },
           { label: 'ელ. კომერცია', value: 'ecommerce', priceModifier: 2000 },
           { label: 'კომპლექსური სისტემა', value: 'complex', priceModifier: 4000 }
         ]
       },
       {
         id: 'design',
-        text: 'საჭიროა თუ არა უნიკალური დიზაინის შექმნა თქვენი ბრენდისთვის?',
+        text: 'უნიკალური დიზაინი გსურთ?',
         type: 'radio',
         options: [
           { label: 'უკვე გვაქვს დიზაინი', value: 'existing', priceModifier: 0 },
-          { label: 'მორგებული შაბლონი', value: 'template', priceModifier: 300 },
-          { label: 'უნიკალური დიზაინი', value: 'custom', priceModifier: 1000 }
+          { label: 'არა, არ გვინდა', value: 'template', priceModifier: 300 },
+          { label: 'კი, გვინდა', value: 'custom', priceModifier: 1000 }
+        ]
+      },
+      {
+        id: 'domain',
+        text: 'გაქვთ თუ არა ნაყიდი დომეინი?',
+        type: 'radio',
+        options: [
+          { label: 'კი', value: 'yes', priceModifier: 0 },
+          { label: 'არა', value: 'no', priceModifier: 0 },
+          { label: 'არ ვიცი', value: 'unknown', priceModifier: 0 }
         ]
       }
     ],
     'smm': [
       {
         id: 'platforms',
-        text: 'რომელ სოციალურ ქსელებში გსურთ თქვენი ბრენდის განვითარება?',
+        text: 'რომელი სოც. გვერდების მართვა გსურთ?',
         type: 'checkbox',
         options: [
           { label: 'Facebook', value: 'facebook', priceModifier: 300 },
@@ -147,7 +147,7 @@ const CalculatorPage: React.FC = () => {
       },
       {
         id: 'posts-per-week',
-        text: 'რამდენი პოსტი გსურთ კვირაში თითოეულ პლატფორმაზე?',
+        text: 'რამდენი პოსტი გსურთ კვირაში?',
         type: 'radio',
         options: [
           { label: '1-2 პოსტი', value: 'few', priceModifier: 0 },
@@ -168,7 +168,7 @@ const CalculatorPage: React.FC = () => {
     'paid-ads': [
       {
         id: 'platforms',
-        text: 'რომელ პლატფორმებზე გსურთ რეკლამების გაშვება?',
+        text: 'რომელი სოც. გვერდების დარეკლამება გსურთ?',
         type: 'checkbox',
         options: [
           { label: 'Facebook', value: 'facebook', priceModifier: 200 },
@@ -179,7 +179,7 @@ const CalculatorPage: React.FC = () => {
       },
       {
         id: 'budget',
-        text: 'რა თანხა განაკიდებთ თვიურად რეკლამებზე?',
+        text: 'რა ბიუჯეტი გაქვთ?',
         type: 'radio',
         options: [
           { label: '100-500₾', value: 'small', priceModifier: 200 },
@@ -201,24 +201,14 @@ const CalculatorPage: React.FC = () => {
     'ai-integration': [
       {
         id: 'integration-type',
-        text: 'რომელი სახის AI ინტეგრაცია გჭირდებათ თქვენს ბიზნესში?',
+        text: 'რომელი სახის AI ინტეგრაცია გჭირდებათ?',
         type: 'radio',
         options: [
           { label: 'ჩატბოტი ვებსაიტზე', value: 'chatbot', priceModifier: 500 },
-          { label: 'კონტენტის გენერაცია', value: 'content', priceModifier: 800 },
+          { label: 'ავტომოპასუხე', value: 'content', priceModifier: 800 },
           { label: 'პროცესების ავტომატიზაცია', value: 'automation', priceModifier: 1500 }
         ]
       },
-      {
-        id: 'complexity',
-        text: 'რა სირთულის სისტემას უნდა მიაბამოთ AI?',
-        type: 'radio',
-        options: [
-          { label: 'მარტივი სისტემა', value: 'simple', priceModifier: 0 },
-          { label: 'საშუალო სირთულის', value: 'medium', priceModifier: 1000 },
-          { label: 'კომპლექსური სისტემა', value: 'complex', priceModifier: 2500 }
-        ]
-      }
     ],
     'seo': [
       {
@@ -229,16 +219,6 @@ const CalculatorPage: React.FC = () => {
           { label: '1-10 გვერდი', value: 'small', priceModifier: 0 },
           { label: '11-50 გვერდი', value: 'medium', priceModifier: 500 },
           { label: '50+ გვერდი', value: 'large', priceModifier: 1200 }
-        ]
-      },
-      {
-        id: 'keywords',
-        text: 'რამდენი საკვანძო სიტყვის პოზიციებზე გსურთ გამოჩენა?',
-        type: 'radio',
-        options: [
-          { label: '1-5 სიტყვა', value: 'few', priceModifier: 0 },
-          { label: '6-15 სიტყვა', value: 'medium', priceModifier: 500 },
-          { label: '16+ სიტყვა', value: 'many', priceModifier: 1000 }
         ]
       },
       {
@@ -255,7 +235,7 @@ const CalculatorPage: React.FC = () => {
     'graphic-design': [
       {
         id: 'design-type',
-        text: 'რომელი სახის დიზაინი გჭირდებათ თქვენს ბრენდს?',
+        text: 'რომელი გჭირდებათ?',
         type: 'checkbox',
         options: [
           { label: 'ლოგო', value: 'logo', priceModifier: 200 },
@@ -264,16 +244,6 @@ const CalculatorPage: React.FC = () => {
           { label: 'ბანერები/რეკლამები', value: 'banners', priceModifier: 300 }
         ]
       },
-      {
-        id: 'revisions',
-        text: 'რამდენი რევიზია გსურთ დიზაინის შექმნის პროცესში?',
-        type: 'radio',
-        options: [
-          { label: '1 რევიზია', value: 'one', priceModifier: 0 },
-          { label: '2 რევიზია', value: 'two', priceModifier: 100 },
-          { label: 'ულიმიტო რევიზიები', value: 'unlimited', priceModifier: 300 }
-        ]
-      }
     ]
   };
 
@@ -303,6 +273,11 @@ const CalculatorPage: React.FC = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
+
+  // Log when submitSuccess changes
+  useEffect(() => {
+    console.log('submitSuccess changed to:', submitSuccess);
+  }, [submitSuccess]);
 
   // Calculate total price whenever selections change
   useEffect(() => {
@@ -466,6 +441,57 @@ const CalculatorPage: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Format user answers for email
+  const formatUserAnswers = () => {
+    let answersText = '';
+    
+    // Add selected services
+    answersText += 'შერჩეული სერვისები:\n';
+    selectedServices.forEach(serviceId => {
+      const service = services.find(s => s.id === serviceId);
+      if (service) {
+        answersText += `- ${service.title}\n`;
+        
+        // Add answers for this service
+        const answers = serviceAnswers[serviceId];
+        if (answers) {
+          const serviceWithQuestions = servicesWithQuestions.find(s => s.id === serviceId);
+          if (serviceWithQuestions) {
+            serviceWithQuestions.questions.forEach(question => {
+              const answer = answers[question.id];
+              if (answer !== undefined) {
+                answersText += `  ${question.text}: `;
+                
+                if (question.type === 'checkbox' && Array.isArray(answer)) {
+                  // For checkbox, list all selected options
+                  const selectedLabels = question.options
+                    ?.filter(option => answer.includes(option.value))
+                    .map(option => option.label) || [];
+                  answersText += selectedLabels.join(', ') + '\n';
+                } else {
+                  // For radio, find the label of the selected option
+                  const selectedOption = question.options?.find(option => option.value === answer);
+                  answersText += (selectedOption?.label || answer) + '\n';
+                }
+              }
+            });
+          }
+        }
+        answersText += '\n';
+      }
+    });
+    
+    // Add package type
+    answersText += `პაკეტის ტიპი: ${packageType === 'individual' ? 'ინდივიდუალური სერვისები' : 'გაერთიანებული პაკეტი'}\n`;
+    
+    // Add discount if applicable
+    if (discount > 0) {
+      answersText += `ფასდაკლება: ${discount}%\n`;
+    }
+    
+    return answersText;
+  };
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -475,21 +501,52 @@ const CalculatorPage: React.FC = () => {
     }
     
     setIsSubmitting(true);
+    setErrors({}); // Clear any previous errors
+    
+    // Set a timeout to prevent infinite loading state
+    const timeoutId = setTimeout(() => {
+      if (isSubmitting) {
+        setErrors({ submit: 'გაგზავნა ვადაზე გადაცილებულია. გთხოვთ, შეამოწმოთ თქვენი ინტერნეტ კავშირი და სცადოთ ხელახლა.' });
+        setIsSubmitting(false);
+      }
+    }, 15000); // 15 seconds timeout
     
     try {
-      // Send email using EmailJS
-      const result = await sendCalculatorEmail(contactInfo);
+      // Format user answers
+      const answersText = formatUserAnswers();
+      
+      // Send email using EmailJS with answers included
+      const result = await sendCalculatorEmail({
+        ...contactInfo,
+        answers: answersText
+      });
+      
+      // Clear the timeout since we got a response
+      clearTimeout(timeoutId);
       
       if (result.success) {
         console.log('Calculator form submitted:', contactInfo);
+        console.log('Setting submitSuccess to true');
         setSubmitSuccess(true);
+        console.log('submitSuccess state set to true');
+        console.log('Current step:', step);
+        // Make sure we're on the results step
+        if (step !== 5) {
+          console.log('Advancing to results step');
+          setStep(5);
+        }
       } else {
-        setErrors({ submit: 'დაფიქსირდა შეცდომა გაგზავნისას. გთხოვთ, სცადოთ ხელახლა.' });
+        console.error('Email sending failed:', result.error);
+        setErrors({ submit: `დაფიქსირდა შეცდომა გაგზავნისას: ${result.error}. გთხოვთ, სცადოთ ხელახლა.` });
         setIsSubmitting(false);
       }
-    } catch (error) {
+    } catch (error: any) {
+      // Clear the timeout since we got a response
+      clearTimeout(timeoutId);
+      
       console.error('Failed to send email:', error);
-      setErrors({ submit: 'დაფიქსირდა შეცდომა გაგზავნისას. გთხოვთ, სცადოთ ხელახლა.' });
+      const errorMessage = error.message || error.toString() || 'უცნობი შეცდომა';
+      setErrors({ submit: `დაფიქსირდა შეცდომა გაგზავნისას: ${errorMessage}. გთხოვთ, სცადოთ ხელახლა.` });
       setIsSubmitting(false);
     }
   };
@@ -525,9 +582,9 @@ const CalculatorPage: React.FC = () => {
   const renderServiceSelection = () => (
     <div className="space-y-8">
       <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-copy">რა სერვისებით შეგვიძლია დაგეხმაროთ?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-copy">რით შეგვიძლია დაგეხმაროთ?</h2>
         <p className="text-xl text-gray-300 font-copy">
-          აირჩიეთ იმ სერვისები, რომლებიც თქვენი ბიზნესისთვის საჭიროა
+          აირჩიეთ სერვისები, რომლებიც გჭირდებათ
         </p>
       </div>
 
@@ -555,17 +612,17 @@ const CalculatorPage: React.FC = () => {
             }`}
             onClick={() => setPackageType('unified')}
           >
-            უნიფიცირებული პაკეტი
+            გაერთიანებული პაკეტი
           </button>
         </div>
       </div>
 
       {packageType === 'unified' && selectedServices.length > 1 && (
-        <div className="bg-gradient-to-r from-red-900/50 to-red-700/50 border border-red-600/50 rounded-xl p-6 text-center mb-8">
-          <h3 className="text-2xl font-bold text-red-200 mb-2 font-copy">უნიფიცირებული პაკეტი</h3>
-          <p className="text-red-100 font-copy">
+        <div className="bg-slate-900 border border-slate-700 rounded-lg p-4 text-center mb-6">
+          <h3 className="text-lg font-bold text-white mb-1 font-copy">უნიფიცირებული პაკეტი</h3>
+          <p className="text-gray-300 text-sm font-copy">
             ყველა შერჩეული სერვისის კომბინირება და სპეციალური ფასდაკლება
-            <span className="block text-2xl font-bold mt-2">{discount}% ფასდაკლება</span>
+            <span className="block text-lg font-bold mt-1 text-green-500">{discount}% ფასდაკლება</span>
           </p>
         </div>
       )}
@@ -574,15 +631,14 @@ const CalculatorPage: React.FC = () => {
         {servicesWithQuestions.map((service) => (
           <motion.div
             key={service.id}
-            whileHover={{ y: -10 }}
-            className={`rounded-2xl border-2 p-6 cursor-pointer transition-all ${
+            className={`rounded-2xl border-2 p-6 cursor-pointer transition-all h-full flex flex-col ${
               selectedServices.includes(service.id)
                 ? 'border-red-500 bg-slate-800/50 shadow-lg shadow-red-500/20'
-                : 'border-slate-700 bg-slate-900/50 hover:border-slate-600'
+                : 'border-slate-700 bg-slate-900/50'
             }`}
             onClick={() => toggleService(service.id)}
           >
-            <div className="flex items-start">
+            <div className="flex items-start flex-grow">
               <div className="bg-slate-800 rounded-lg p-3 mr-4">
                 <img 
                   src={service.image} 
@@ -590,14 +646,14 @@ const CalculatorPage: React.FC = () => {
                   className="w-12 h-12 object-contain"
                 />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 flex flex-col h-full">
                 <div className="flex justify-between items-start">
                   <h3 className="text-xl font-bold mb-2 font-copy">{service.title}</h3>
                   {selectedServices.includes(service.id) && (
                     <Check className="text-red-500 w-6 h-6" />
                   )}
                 </div>
-                <p className="text-gray-400 text-sm mb-3 font-copy">{service.description}</p>
+                <p className="text-gray-400 text-sm mb-3 font-copy flex-grow">{service.description}</p>
                 <div className="text-right">
                   <span className="text-lg font-bold text-red-400 font-copy">საწყისი ფასი: {service.basePrice}₾</span>
                 </div>
@@ -823,19 +879,14 @@ const CalculatorPage: React.FC = () => {
   // Render contact information step
   const renderContactInfo = () => (
     <div className="max-w-2xl mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-copy">დაგვიტოვეთ თქვენი კონტაქტი</h2>
-        <p className="text-xl text-gray-300 font-copy">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 font-copy">დაგვიტოვეთ თქვენი კონტაქტი</h2>
+        <p className="text-2xl text-gray-300 font-copy">
           რომ შევძლოთ თქვენთან დაკავშირება და უფრო დეტალურად განვიხილოთ თქვენი პროექტი
         </p>
-        <div className="bg-slate-800 rounded-xl p-6 mt-6 inline-block">
-          <h3 className="text-2xl font-bold mb-2 font-copy">თქვენი პროექტის დაახლოებითი ფასი</h3>
-          <div className="text-4xl font-bold text-red-500">{Math.round(totalPrice)}₾</div>
-          {discount > 0 && (
-            <p className="text-green-400 mt-2 font-copy">
-              ფასდაკლება: {discount}%
-            </p>
-          )}
+        <div className="bg-slate-900 border border-slate-700 rounded-xl p-6 mt-8 inline-block">
+          <h3 className="text-xl font-bold mb-2 font-copy">ფასი ხელმისაწვდომია ფორმის შევსების შემდეგ</h3>
+          <div className="text-3xl font-bold text-gray-500">***</div>
         </div>
       </div>
 
@@ -913,7 +964,7 @@ const CalculatorPage: React.FC = () => {
                 <MessageSquare className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
                 <textarea
                   id="message"
-                  placeholder="გვიყევით თქვენი პროექტის შესახებ, მიზნებს და სპეციფიკურ მოთხოვნებს..."
+                  placeholder="ინფორმაცია თქვენი პროექტის შესახებ სურვილისამებრ"
                   value={contactInfo.message}
                   onChange={(e) => handleContactChange('message', e.target.value)}
                   className="w-full min-h-[120px] bg-slate-800 border border-slate-700 rounded-md pl-10 p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500 font-copy"
@@ -1014,14 +1065,14 @@ const CalculatorPage: React.FC = () => {
         <div className="space-y-8">
           <h2 className="text-4xl md:text-5xl font-bold font-copy">თქვენი პროექტის ფასი</h2>
           <p className="text-xl text-gray-300 font-copy">
-            ეს არის თქვენი პროექტის დაახლოებითი ფასი თქვენი მიერ მითითებული მოთხოვნების გათვალისწინებით
+            ფასი ხელმისაწვდომია ფორმის შევსების შემდეგ
           </p>
           
           <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
             <CardContent className="p-8">
               <div className="text-center mb-8">
-                <div className="text-6xl font-bold text-red-500 mb-2">{Math.round(totalPrice)}₾</div>
-                <p className="text-gray-400 font-copy">დაახლოებითი ფასის დიაპაზონი</p>
+                <div className="text-6xl font-bold text-gray-500 mb-2">***</div>
+                <p className="text-gray-400 font-copy">ფასი ხელმისაწვდომია ფორმის შევსების შემდეგ</p>
               </div>
 
               {discount > 0 && (

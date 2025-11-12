@@ -20,6 +20,7 @@ export interface EmailData {
   email?: string;
   company?: string;
   name?: string; // Add name property for calculator form
+  answers?: string; // Add answers property for calculator form
 }
 
 export const sendConsultationEmail = async (data: EmailData) => {
@@ -57,6 +58,7 @@ export const sendCalculatorEmail = async (data: EmailData) => {
       email: data.email || 'Not provided',
       company: data.company || 'Not provided',
       message: data.message || 'No additional message',
+      answers: data.answers || 'No answers provided',
       reply_to: data.email || 'Not provided'
     };
 

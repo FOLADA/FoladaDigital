@@ -323,26 +323,6 @@ const WhyUs = () => {
           </div>
         </div>
       </div>
-
-      {/* Added buttons similar to Hero section */}
-      <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mt-8 mb-16">
-        <Link to="/კალკულატორი">
-          <Button 
-            size="lg" 
-            className="border-[rgb(255,255,255)] rounded-[6px] border-2 text-white px-6 py-4 text-lg md:px-9 md:py-6 md:text-2xl w-full sm:w-auto"
-          >
-            <FaCalculator className="inline-block mr-2" /> ფასების გამოთვლა
-          </Button>
-        </Link>
-        <Button 
-          size="lg" 
-          variant="outline" 
-          className="bg-[rgb(255,0,0)] text-white border-[rgb(255,0,0)] border-2 hover:bg-[rgb(255,0,0)] hover:text-white px-6 py-4 text-lg md:px-12 md:py-6 md:text-2xl rounded-[6px] w-full sm:w-auto"
-          onClick={() => setIsModalOpen(true)}
-        >
-          <FaPhoneAlt className="inline-block mr-2" /> კონსულტაცია
-        </Button>
-      </div>
       
       {/* Consultation Modal */}
       {isModalOpen && (

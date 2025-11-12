@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Grid, List, Search, Filter } from 'lucide-react';
+import { ChevronLeft, Grid, List, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,63 +15,83 @@ const PortfolioPage = () => {
     {
       id: 1,
       image: "/works/aphoria.png",
-      title: "Aphoria Luxury Brand",
-      description: "Modern e-commerce website for luxury brand with immersive product experiences",
+      title: "აფორია ლუქს ბრენდი",
+      description: "თანამედროვე ელ-კომერციის ვებსაიტი ლუქს ბრენდისთვის იმერსიული პროდუქტების გამოცდილებით",
       category: "web-design",
-      client: "Aphoria",
-      year: "2024",
-      technologies: ["React", "Three.js", "GSAP"]
+      client: " აფორია",
+      clientLink: "https://aphoria.co",
+      technologies: ["Next.js", "Three.js"]
     },
     {
       id: 2,
       image: "/works/beerumuseum.png",
-      title: "Beerru Museum",
-      description: "Interactive museum experience with virtual tours and educational content",
+      title: "ვეინშტეფანის მუზეუმი",
+      description: "უძველესი გერმანული ტრადიციის მქონე რესტორნის ვებსაიტი",
       category: "web-development",
-      client: "Beerru Museum",
-      year: "2023",
-      technologies: ["Next.js", "WebGL", "Node.js"]
+      client: " ვეინშტეფანის მუზეუმი",
+      clientLink: "https://beermuseum.ge",
+      technologies: ["React", "WebGL", "Node.js"]
     },
     {
       id: 3,
       image: "/works/coldemailerai.png",
       title: "Cold Emailer AI",
-      description: "AI-powered email marketing platform with personalized content generation",
+      description: "ხელოვნური ინტელექტის მქონე ელ. ფოსტის მარკეტინგის პლატფორმა პერსონალიზებული შინაარსის გენერაციით",
       category: "ai-integration",
-      client: "TechStart",
-      year: "2024",
+      client: " TechStart",
+      clientLink: "https://cold-emailer-ai.vercel.app",
       technologies: ["React", "Python", "OpenAI"]
     },
     {
       id: 4,
       image: "/works/energosunge.png",
-      title: "EnergoSun GE",
-      description: "Renewable energy company website with solar calculator and dashboard",
+      title: "ენერგოსანი",
+      description: "განახლებადი ენერგიის კომპანიის ვებსაიტი სოლარული კალკულატორით და დეშბორდით",
       category: "web-design",
-      client: "EnergoSun",
-      year: "2023",
-      technologies: ["Vue.js", "D3.js", "Firebase"]
+      client: " ენერგოსანი",
+      clientLink: "https://energosun.ge",
+      technologies: ["React", "D3.js", "Firebase"]
     },
     {
       id: 5,
       image: "/works/shushabanditseretelze.png",
-      title: "Shusha Band",
-      description: "Music band promotional website with streaming integration and tour dates",
+      title: "შუშაბანდი",
+      description: "მუსიკალური ბენდის პრომო ვებსაიტი სტრიმინგის ინტეგრაციით და ტურების თარიღებით",
       category: "branding",
-      client: "Shusha Band",
-      year: "2024",
-      technologies: ["Svelte", "Web Audio API", "Stripe"]
+      client: " შუშაბანდი",
+      clientLink: "https://shushabanditseretelze.ge",
+      technologies: ["React", "Web Audio API", "Stripe"]
     },
     {
       id: 6,
       image: "/works/tergiuni.png",
-      title: "Tergi Uni",
-      description: "University educational platform with course management and student portal",
+      title: "თერგის უნივერსიტეტი",
+      description: "ერთიანი ეროვნული გამოცდებისთვის მოსამზადებელი ვებსაიტი AI ინტეგრაციით",
       category: "web-development",
-      client: "Tergi University",
-      year: "2023",
-      technologies: ["Angular", "NestJS", "MongoDB"]
-    }
+      client: " თერგის უნივერსიტეტი",
+      clientLink: "https://tergiuni.ge",
+      technologies: ["Next.js","MongoDB", "Gemini AI"]
+    },
+    {
+      id: 8,
+      image: "/works/twobirds.png",
+      title: "Two Thirds",
+      description: "უცხოური ტანსაცმლის ონლაინ მაღაზია",
+      category: "E-Commerce",
+      client: "Two Thirds",
+      clientLink: "https://twothirds.com/",
+      technologies: ["Shopify", "Stripe"]
+    },
+    {
+      id: 7,
+      image: "/works/GCDlanding.png",
+      title: "გლობალური განვითარების ცენტრი",
+      description: "გლობალური განვითარების ცენტრის ვებსაიტი ინტეგრირებული განვითარების სისტემათა",
+      category: "web-development",
+      client: " გლობალური განვითარების ცენტრი",
+      clientLink: "https://globaldevelopmentcenter.vercel.app/",
+      technologies: ["React"]
+    },
   ];
 
   // Categories for filtering
@@ -80,7 +100,8 @@ const PortfolioPage = () => {
     { id: 'web-design', name: 'ვებ დიზაინი' },
     { id: 'web-development', name: 'ვებ განვითარება' },
     { id: 'ai-integration', name: 'AI ინტეგრაცია' },
-    { id: 'branding', name: 'ბრენდინგი' }
+    { id: 'branding', name: 'ბრენდინგი' },
+    { id: 'e-commerce', name: 'ეკომერცია' },
   ];
 
   // Filter portfolio items based on category and search query
@@ -103,7 +124,7 @@ const PortfolioPage = () => {
     }
   };
 
-  const item = {
+  const itemVariant = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
@@ -212,10 +233,10 @@ const PortfolioPage = () => {
               : "space-y-8"
             }
           >
-            {filteredItems.map((item) => (
+            {filteredItems.map((portfolioItem) => (
               <motion.div
-                key={item.id}
-                variants={item}
+                key={portfolioItem.id}
+                variants={itemVariant}
                 className={`relative overflow-hidden rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-900 to-slate-800 backdrop-blur-lg transition-all duration-300 hover:border-red-500 ${
                   viewMode === 'list' ? 'flex flex-col md:flex-row' : ''
                 }`}
@@ -225,30 +246,37 @@ const PortfolioPage = () => {
               >
                 <div className={`overflow-hidden relative ${viewMode === 'list' ? 'md:w-1/2' : ''}`}>
                   <img 
-                    src={item.image} 
-                    alt={item.title}
+                    src={portfolioItem.image} 
+                    alt={portfolioItem.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 
                 <div className={`p-6 ${viewMode === 'list' ? 'md:w-1/2' : ''}`}>
                   <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-2xl font-bold text-white">{item.title}</h3>
-                    <span className="text-xs bg-slate-700 text-slate-300 px-2 py-1 rounded">
-                      {item.year}
-                    </span>
+                    <h3 className="text-2xl font-bold text-white">{portfolioItem.title}</h3>
                   </div>
                   
                   <p className="text-[15px] text-slate-300 font-copy leading-relaxed mb-4">
-                    {item.description}
+                    {portfolioItem.description}
                   </p>
                   
                   <div className="mb-4">
-                    <p className="text-sm font-copy text-slate-400 mb-1">კლიენტი: <span className="text-white">{item.client}</span></p>
+                    <p className="text-sm font-copy text-slate-400 mb-1">
+                      კლიენტი: 
+                      <a 
+                        href={portfolioItem.clientLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-red-400 transition-colors duration-200 underline"
+                      >
+                        {portfolioItem.client}
+                      </a>
+                    </p>
                   </div>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {item.technologies.map((tech, index) => (
+                    {portfolioItem.technologies.map((tech, index) => (
                       <span 
                         key={index} 
                         className="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded"

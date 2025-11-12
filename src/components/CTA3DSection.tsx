@@ -58,7 +58,7 @@ const CTA3DSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
-                    დაიწყეთ თქვენი ბიზნესის რევოლუცია დღესვე
+                    დავიწყოთ თანამშრომლობა დღესვე
                   </motion.p>
                 </div>
                 

@@ -10,8 +10,8 @@ const Portfolio = () => {
     {
       id: 1,
       image: "/works/aphoria.png",
-      title: "Aphoria",
-      description: "თანამედროვე ვებსაიტი კომპლექსური სისტემით"
+      title: "აფორია",
+      description: "ლუქს ბრენდისთვის თანამედროვე ვებსაიტის დიზაინი"
     },
     {
       id: 2,
@@ -23,12 +23,12 @@ const Portfolio = () => {
       id: 3,
       image: "/works/coldemailerai.png",
       title: "Cold Emailer AI",
-      description: "ვებსაიტი ხელოვნური ინტელექტით"
+      description: "ხელოვნური ინტელექტის მქონე ელ. ფოსტის მარკეტინგის პლატფორმა"
     },
     {
       id: 4,
       image: "/works/energosunge.png",
-      title: "EnergoSun",
+      title: "ენერგოსანი",
       description: "განახლებადი ენერგიის წყაროს კომპანიის ვებსაიტი"
     },
     {
@@ -41,8 +41,20 @@ const Portfolio = () => {
       id: 6,
       image: "/works/tergiuni.png",
       title: "თერგი",
-      description: "University educational platform"
-    }
+      description: "უნივერსიტეტის განათლების პლატფორმა"
+    },
+    {
+      id: 8,
+      image: "/works/twobirds.png",
+      title: "Two Thirds",
+      description: "უცხოური ტანსაცმლის ონლაინ მაღაზია",
+    },
+    {
+      id: 7,
+      image: "/works/GCDlanding.png",
+      title: "გლობალური განვითარების ცენტრი",
+      description: "გლობალური განვითარების ცენტრის ვებსაიტი ინტეგრირებული განვითარების სისტემათა",
+    },
   ];
 
   useEffect(() => {
