@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react"
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection';
 import CompanyLogos from './components/CompanyLogos';
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="min-h-screen text-white">
       <Navbar/>
+      <Analytics />
       <Routes>
         <Route path="/" element={
           <>
