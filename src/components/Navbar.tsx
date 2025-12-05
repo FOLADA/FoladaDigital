@@ -24,11 +24,11 @@ const Navbar: React.FC = () => {
     { name: 'მთავარი', href: '/' },
     { name: 'სერვისები', href: '#services' },
     { name: 'ფასები', href: '/კალკულატორი' },
+    { name: 'პაკეტები', href: '/packages' },
     { name: 'კლიენტები', href: '#clients' },
     { name: 'FAQ', href: '#faq' },
     { name: 'ბლოგი', href: '#blog' },
   ];
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -49,10 +49,10 @@ const Navbar: React.FC = () => {
 
   return (
     <nav 
-      className={`sticky max-w-[1200px] rounded-full top-5 z-50 transition-all duration-300 border border-white/10 mx-auto w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] ${ // Added width constraints to prevent overflow
+      className={`sticky max-w-[1200px] rounded-full top-5 z-50 transition-all duration-300 border border-gray-800 mx-auto w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] ${ // Changed border color to dark gray
         scrolled 
-          ? 'bg-transparent backdrop-blur-sm shadow-2xl' 
-          : 'bg-transparent backdrop-blur-sm'
+          ? 'bg-black/80 backdrop-blur-sm shadow-2xl' 
+          : 'bg-black/80 backdrop-blur-sm'
       }`}
       aria-label="Main navigation"
     >
@@ -61,14 +61,14 @@ const Navbar: React.FC = () => {
           <img 
             src="/logo.png" 
             alt="Elevo Logo" 
-            className="h-12 sm:h-16 md:h-20 w-auto" // Reduced logo size to prevent overflow
+            className="h-12 sm:h-16 md:h-20 w-auto"
           />
         </a>
         
         {/* Desktop Navigation */}
         <ul className="hidden md:flex list-none m-0 p-0">
           {navLinks.map((link, index) => (
-            <li key={index} className="mx-2 lg:mx-3"> {/* Reduced margins to prevent overflow */}
+            <li key={index} className="mx-2 lg:mx-3">
               <a 
                 href={link.href} 
                 className="text-sm md:text-base font-copy text-white no-underline transition-all duration-300 hover:text-[rgb(255,0,0)] hover:scale-105 block py-3"
@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
       
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-4 right-4 sm:left-5 sm:right-5 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 mt-2">
+        <div className="md:hidden absolute top-full left-4 right-4 sm:left-5 sm:right-5 bg-black/90 backdrop-blur-md border border-gray-800 rounded-xl p-4 sm:p-6 mt-2"> {/* Changed border color to dark gray */}
           <ul className="list-none p-0 m-0">
             {navLinks.map((link, index) => (
               <li key={index} className="my-2">

@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import CalculatorPage from './pages/CalculatorPage';
 import Portfolio from './components/Portfolio';
 import PortfolioPage from './pages/PortfolioPage';
+import PackagesPage from './pages/PackagesPage';
 
 function App() {
   return (
@@ -31,8 +32,24 @@ function App() {
             <Footer />
           </>
         } />
-        <Route path="/კალკულატორი" element={<CalculatorPage />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/კალკულატორი" element={
+          <>
+            <CalculatorPage />
+            <Footer />
+          </>
+        } />
+        <Route path="/portfolio" element={
+          <>
+            <PortfolioPage />
+            <Footer />
+          </>
+        } />
+        <Route path="/packages" element={
+          <>
+            <PackagesPage />
+            <Footer />
+          </>
+        } />
       </Routes>
     </div>
   );
