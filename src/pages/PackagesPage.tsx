@@ -183,29 +183,7 @@ const PackagesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Lead Magnet Section */}
-      <section className="py-16 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl p-8 text-center">
-            <div className="text-5xl mb-4">❓</div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">ჯერ კიდევ ფიქრობთ?</h3>
-            <p className="text-gray-300 text-lg mb-6">
-              უფასო PDF: "როგორ ამოიცნოთ ცუდი ვებ სააგენტო - 7 Red Flag"
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input 
-                type="email" 
-                placeholder="თქვენი ელ. ფოსტა" 
-                className="flex-grow bg-gray-800 border border-gray-700 rounded-full px-6 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 font-copy"
-              />
-              <button className="bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-3 px-6 rounded-full whitespace-nowrap hover:scale-105 transition-transform duration-300">
-                გამოგზავნა
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Quiz Modal */}      {showQuiz && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
