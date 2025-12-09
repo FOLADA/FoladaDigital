@@ -152,28 +152,22 @@ const PackageCard: React.FC<PackageCardProps> = ({ packageData, isReversed, onQu
         )}
         
         {/* CTA Button */}
-        <button 
-          className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all duration-300 mb-3 sm:mb-4 font-copy flex-shrink-0 ${
+        <a 
+          href="https://calendly.com/giokevkh-kd_4/democall" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={`block w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all duration-300 mb-3 sm:mb-4 font-copy flex-shrink-0 text-center ${
             packageData.featured
-              ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/30 hover:from-red-500 hover:to-red-600 h-12 sm:h-14'
+              ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/30 hover:from-red-500 hover:to-red-600'
               : packageData.popular
-                ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30 hover:from-blue-500 hover:to-blue-600 h-12 sm:h-14'
-                : 'bg-white text-gray-900 border-2 border-white hover:bg-gray-100 h-11 sm:h-13'
+                ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30 hover:from-blue-500 hover:to-blue-600'
+                : 'bg-white text-gray-900 border-2 border-white hover:bg-gray-100'
           }`}
         >
-          პაკეტის არჩევა {packageData.featured && '→'}
-        </button>
+          პაკეტის არჩევა
+        </a>
         
         {/* Social Proof */}
-        <div className="text-center py-3 sm:py-4 flex-shrink-0">
-          <p className="text-gray-400 text-xs sm:text-sm font-medium font-copy">
-            {packageData.id === 'basic' 
-              ? '✓ 15 კლინიკამ ამოირჩია საბაზისო' 
-              : packageData.id === 'standard'
-                ? '✓ 32 კლინიკამ ამოირჩია სტანდარტული' 
-                : '✓ 18 კლინიკამ ამოირჩია პრემიუმი'}
-          </p>
-        </div>
       </div>
     </motion.div>
   );

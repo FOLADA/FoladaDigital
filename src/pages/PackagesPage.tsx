@@ -11,7 +11,6 @@ interface PackageData {
   price: number;
   originalPrice?: number;
   monthly: number;
-  discount?: number;
   popular: boolean;
   featuresHeader: string;
   features: string[];
@@ -69,72 +68,43 @@ const PackagesPage: React.FC = () => {
       popular: false,
       featuresHeader: 'შედის პაკეტში:',
       features: [
-        '✔ თანამედროვე სამედიცინო დიზაინი',
-        '✔ 1-4 გვერდი',
-        '✔ საბაზისო SEO',
-        '✔ საკონტაქტო ფორმა + Google Maps',
-        '✔ სამუშაო საათები + სოცქსელები',
-        '✔ SSL დაცვა'
+        'თანამედროვე სამედიცინო დიზაინი',
+        '1-4 გვერდი',
+        'საბაზისო SEO',
+        'საკონტაქტო ფორმა',
+        'Google Maps',
+        'სამუშაო საათები',
+        'სოცქსელების დართვა',
+        'SSL დაცვა'
       ],
       urgency: []
     },
     {
-      id: 'standard',
+      id: 'premium',
       featured: true,
-      title: 'სტანდარტული',
-      icon: '💎',
-      price: 1500,
-      monthly: 50,
+      title: 'პრემიუმი',
+      icon: '🚀',
+      price: 2000,
+      originalPrice: 2500,
+      monthly: 70,
       popular: true,
       featuresHeader: 'ყველაფერი საბაზისოდან + დამატებით:',
       features: [
-        '✔ თანამედროვე სამედიცინო დიზაინი',
-        '✔ 4-8 გვერდი',
-        '✔ ონლაინ ჯავშნის სისტემა პაციენტებისთვის',
-        '✔ CMS / Admin Panel — კონტენტის მარტივი მართვა',
-        '✔ მრავალენოვანი (ქართ / რუს / ინგლ)',
-        '✔ სერვისების სია + გალერეა',
-        '✔ Call Now ღილაკი',
-        '✔ მობილურზე ოპტიმიზაცია',
-        '✔ ონლაინ ჩატი (საიტზევე)',
-        '✔ საბაზისო SEO',
-        '✔ საკონტაქტო ფორმა + Google Maps',
-        '✔ სამუშაო საათები + სოცქსელები',
-        '✔ SSL დაცვა',
-        '✔ რევიზიები'
-      ],
-      urgency: [
-        '⏰ რეკომენდებული პაკეტი'
-      ]
-    },
-    {
-      id: 'premium',
-      featured: false,
-      title: 'პრემიუმი',
-      icon: '🚀',
-      price: 2500,
-      originalPrice: 3200,
-      monthly: 70,
-      discount: 20,
-      popular: false,
-      featuresHeader: 'ყველაფერი სტანდარტულიდან + დამატებით:',
-      features: [
-        '✔ უმაღლესი კლასის დიზაინი',
-        '✔ 8+ გვერდი',
-        '✔ დეტალური სერვისები + ექიმების პროფილები',
-        '✔ ბლოგი / სტატიები',
-        '✔ SEO ოპტიმიზაცია',
-        '✔ ანიმაციები & micro-interactions',
-        '✔ გაფართოებული უსაფრთხოება',
-        '✔ Search Console ინტეგრაცია',
-        '✔ დამატებითი რევიზიები + 24/7 საიტის მოვლა'
+        'უმაღლესი კლასის დიზაინი',
+        '8+ გვერდი',
+        'დეტალური სერვისები + ექიმების პროფილები',
+        'ბლოგი / სტატიები',
+        'SEO ოპტიმიზაცია',
+        'ანიმაციები & micro-interactions',
+        'გაძლიერებული უსაფრთხოება',
+        'Search Console ინტეგრაცია',
+        'დამატებითი შეფასებები + 24/7 საიტის მხარდაჭერა'
       ],
       urgency: [
         '⏰ მხოლოდ 3 ადგილი დარჩა თებერვალში'
       ]
     }
   ];
-
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
@@ -166,7 +136,7 @@ const PackagesPage: React.FC = () => {
       {/* Packages Section */}
       <section className="py-16 md:py-24 bg-black">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
             {/* Render BASIC package first */}
             <div className="w-full max-w-md">
               <PackageCard 
@@ -176,19 +146,10 @@ const PackagesPage: React.FC = () => {
               />
             </div>
             
-            {/* Render STANDARD package second */}
+            {/* Render PREMIUM package second */}
             <div className="w-full max-w-md">
               <PackageCard 
                 packageData={packages[1]} 
-                isReversed={false}
-                onQuizAnswer={handleQuizAnswer}
-              />
-            </div>
-            
-            {/* Render PREMIUM package third */}
-            <div className="w-full max-w-md">
-              <PackageCard 
-                packageData={packages[2]} 
                 isReversed={false}
                 onQuizAnswer={handleQuizAnswer}
               />
@@ -197,15 +158,14 @@ const PackagesPage: React.FC = () => {
           
         </div>
         <div className="container mx-auto px-4 text-center mt-8">
-          <motion.button
-            className="bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 px-8 rounded-full text-lg hover:scale-105 transition-transform duration-300 shadow-lg shadow-red-500/30"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            onClick={() => setShowQuiz(true)}
+          <a
+            href="https://calendly.com/giokevkh-kd_4/democall"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 px-8 rounded-full text-lg hover:scale-105 transition-transform duration-300 shadow-lg shadow-red-500/30 inline-block"
           >
             → არ ვარ დარწმუნებული რომელი ავირჩიო
-          </motion.button>
+          </a>
         </div>
       </section>
 
