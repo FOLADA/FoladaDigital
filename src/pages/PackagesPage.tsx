@@ -159,16 +159,7 @@ const PackagesPage: React.FC = () => {
           >
             აირჩიეთ თქვენთვის სასურველი პაკეტი
           </motion.p>
-          
-          <motion.button
-            className="bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 px-8 rounded-full text-lg hover:scale-105 transition-transform duration-300 shadow-lg shadow-red-500/30"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            onClick={() => setShowQuiz(true)}
-          >
-            → არ ვარ დარწმუნებული რომელი ავირჩიო
-          </motion.button>
+        
         </div>
       </section>
 
@@ -203,6 +194,18 @@ const PackagesPage: React.FC = () => {
               />
             </div>
           </div>
+          
+        </div>
+        <div className="container mx-auto px-4 text-center mt-8">
+          <motion.button
+            className="bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 px-8 rounded-full text-lg hover:scale-105 transition-transform duration-300 shadow-lg shadow-red-500/30"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            onClick={() => setShowQuiz(true)}
+          >
+            → არ ვარ დარწმუნებული რომელი ავირჩიო
+          </motion.button>
         </div>
       </section>
 

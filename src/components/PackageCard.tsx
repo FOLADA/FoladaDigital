@@ -73,7 +73,7 @@ const PackageCard: React.FC<PackageCardProps> = ({ packageData, isReversed, onQu
           </div>
           <h3 className={`font-extrabold mb-2 font-copy ${
             packageData.featured 
-              ? 'text-4xl sm:text-5xl bg-gradient-to-r from-white to-red-300 bg-clip-text text-transparent' 
+              ? 'text-3xl sm:text-5xl bg-gradient-to-r from-white to-red-300 bg-clip-text text-transparent' 
               : 'text-3xl sm:text-4xl text-white'
           }`}>
             {packageData.title}
@@ -90,21 +90,19 @@ const PackageCard: React.FC<PackageCardProps> = ({ packageData, isReversed, onQu
             </div>
           )}
           
-          <div className="text-5xl sm:text-6xl font-extrabold text-white mb-3 sm:mb-4 font-copy">
-            {packageData.price}₾
+          <div className="flex items-end justify-center mb-3 sm:mb-4">
+            <div className="text-5xl sm:text-6xl font-extrabold text-white font-copy">
+              {packageData.price}₾
+            </div>
             {packageData.discount && (
               <span className="inline-block bg-red-500 text-white text-xs font-bold px-2 py-1 sm:px-3 sm:py-1 rounded-full ml-2 animate-pulse font-copy">
                 {packageData.discount}% OFF
               </span>
             )}
-          </div>
-          
-          <div className="flex justify-between items-center mb-2 font-copy">
-            <div className="text-white font-semibold text-base sm:text-lg">
+            <div className="text-white font-semibold text-lg sm:text-lg ml-3 mb-2 font-copy">
               + {packageData.monthly}₾/თვე
             </div>
-          </div>
-          
+          </div>          
           {/* Removed the daily cost calculation and coffee icon as per request */}
         </div>
         
